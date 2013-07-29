@@ -4,7 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan=3 class=action-buttons></th>
+      <th colspan=3 class=action-buttons>
+        <%= link_to 'New Server', new_server_path %>
+      </th>
     </tr>
   </thead>
 
@@ -19,7 +21,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Server', new_server_path %>
