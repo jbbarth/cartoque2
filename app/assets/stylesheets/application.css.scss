@@ -29,5 +29,15 @@
 body { padding-top: 60px; }
 
 /* general styling */
+
 //action buttons in tables
-th.action-buttons { width: 15%; font-weight: normal; text-align:right; }
+th.action-buttons {
+  width: 15%;
+  font-weight: normal;
+  text-align:right;
+}
+td.action-buttons { 
+  font-weight: 90%;
+  a, a:visited, a:hover { color: #888; }
+  a:hover { color: #005580; }
+}
