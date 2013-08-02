@@ -19,6 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ServersController do
+  # Fake devise login
+  login_user
 
   # This should return the minimal set of attributes required to create a valid
   # Server. As you add validations to Server, be sure to

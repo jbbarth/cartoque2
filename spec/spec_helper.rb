@@ -43,6 +43,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # Include Devise test helpers for controller specs
+  config.include Devise::TestHelpers, type: :controller
+  # Useful self-defined macros
+  config.extend ControllerMacros, type: :controller
+
   # Database Cleaner
   # Restore a clean state between each spec/test
   config.before(:suite) do
