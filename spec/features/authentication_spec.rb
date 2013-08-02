@@ -20,4 +20,33 @@ describe 'Authentication' do
       current_path.should == root_path
     end
   end
+
+  describe 'redirection after sign in' do
+    let!(:user) { User.create!(email: 'john@example.net', password: 'foobar123') }
+
+    it 'redirects back to root path if no back url given' do
+      visit new_user_session_path
+
+      within '#new_user' do
+        fill_in 'user_email', with: 'john@example.net'
+        fill_in 'user_password', with: 'foobar123'
+        click_button 'Sign in'
+      end
+
+      current_path.should == root_path
+    end
+
+    it 'redirects back to stored location if any' do
+      visit servers_path
+      current_path.should == new_user_session_path
+
+      within '#new_user' do
+        fill_in 'user_email', with: 'john@example.net'
+        fill_in 'user_password', with: 'foobar123'
+        click_button 'Sign in'
+      end
+
+      current_path.should == servers_path
+    end
+  end
 end
