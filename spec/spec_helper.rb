@@ -48,6 +48,9 @@ RSpec.configure do |config|
   # Useful self-defined macros
   config.extend ControllerMacros, type: :controller
 
+  # Include factory_girl syntax methods so that we don't have to type "FactoryGirl" each time
+  config.include FactoryGirl::Syntax::Methods
+
   # Database Cleaner
   # Restore a clean state between each spec/test
   config.before(:suite) do

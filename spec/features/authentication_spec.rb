@@ -8,7 +8,7 @@ describe 'Authentication' do
     end
 
     it 'accepts authentication' do
-      User.create!(email: 'john@example.net', password: 'foobar123')
+      create(:user)
       visit new_user_session_path
 
       within '#new_user' do
@@ -22,7 +22,7 @@ describe 'Authentication' do
   end
 
   describe 'redirection after sign in' do
-    let!(:user) { User.create!(email: 'john@example.net', password: 'foobar123') }
+    let!(:user) { create(:user) }
 
     it 'redirects back to root path if no back url given' do
       visit new_user_session_path
