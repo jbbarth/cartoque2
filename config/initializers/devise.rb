@@ -1,3 +1,7 @@
+# Accept auth token via a HTTP header
+require 'cartoque/devise_header_token'
+Cartoque::Application.config.middleware.insert_before ActionDispatch::ParamsParser, Cartoque::DeviseHeaderToken
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -186,7 +190,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :api_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
