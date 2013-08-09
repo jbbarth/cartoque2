@@ -32,6 +32,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Resource-Oriented Architectures in Ruby
+gem 'roar-rails'
+
 # Authentication
 gem 'devise', '~> 3.0.0'
 
