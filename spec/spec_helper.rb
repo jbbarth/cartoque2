@@ -48,6 +48,9 @@ RSpec.configure do |config|
   # Useful self-defined macros
   config.extend ControllerMacros, type: :controller
 
+  # Include warden helpers in integration specs ("login_as" etc.)
+  config.include Warden::Test::Helpers, type: :feature
+
   # Include factory_girl syntax methods so that we don't have to type "FactoryGirl" each time
   config.include FactoryGirl::Syntax::Methods
 

@@ -13,6 +13,9 @@ Cartoque::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  # catch ActionController#RoutingError
+  match '*a', to: 'application#render_404', via: :all
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

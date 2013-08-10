@@ -58,14 +58,6 @@ describe 'Authentication' do
         visit servers_path(format: 'html').to_s
         page.status_code.should == 200
       end
-
-      xit 'returns an empty body if authorized + RoutingError + json format' do
-        u = create(:user)
-        page.set_headers('HTTP_X_API_TOKEN' => u.authentication_token)
-        visit '/serverz.json'
-        page.status_code.should == 404
-        page.body.should be_blank
-      end
     end
   end
 
