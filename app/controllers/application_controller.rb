@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
       format.any(:atom, :xml, :js, :json) { head :not_found }
     end
   end
+
+  # Sets format to 'json' if it's blank when the filter is called
+  # Mostly useful for API controllers...
+  def set_json_format_if_none
+    request.format = 'json' if params[:format].blank?
+  end
 end
