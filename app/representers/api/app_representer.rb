@@ -1,4 +1,4 @@
-module ContactRepresenter
+module API::AppRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
 
@@ -8,6 +8,6 @@ module ContactRepresenter
   property :updated_at, writeable: false
 
   link :self do
-    contact_path(self)
+    app_path(self)
   end
 end

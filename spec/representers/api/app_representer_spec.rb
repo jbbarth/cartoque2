@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe AppRepresenter do
-  let(:app) { create(:app, name: "app-#{Random.rand(1e4)}").extend(AppRepresenter) }
+describe API::AppRepresenter do
+  let(:app) { create(:app, name: "app-#{Random.rand(1e4)}").extend(API::AppRepresenter) }
   let(:app_json) { JSON.parse(app.to_json) }
-  let(:new_app) { App.new.extend(AppRepresenter) }
+  let(:new_app) { App.new.extend(API::AppRepresenter) }
 
   describe '#to_json' do
     it 'should serialize to json+hal' do

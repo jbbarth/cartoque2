@@ -158,26 +158,4 @@ describe ServersController do
       response.should redirect_to(servers_url)
     end
   end
-
-  describe "API level" do
-    render_views
-
-    describe "GET index" do
-      it "returns a JSON representation with HAL additions provided by roar gem" do
-        server = Server.create! valid_attributes
-        get :index, {format: 'json'}, valid_session
-        json = JSON.parse(response.body)
-        expect(json.detect{|s|s['id'] == server.id}.keys).to include '_links'
-      end
-    end
-
-    describe "GET show" do
-      it "returns a JSON representation with HAL additions provided by roar gem" do
-        server = Server.create! valid_attributes
-        get :show, {id: server.to_param, format: 'json'}, valid_session
-        json = JSON.parse(response.body)
-        expect(json.keys).to include '_links'
-      end
-    end
-  end
 end

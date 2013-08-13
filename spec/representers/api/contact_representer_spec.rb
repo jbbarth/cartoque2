@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe ContactRepresenter do
-  let(:contact) { create(:contact, name: "John Doe ##{Random.rand(1e4)}").extend(ContactRepresenter) }
+describe API::ContactRepresenter do
+  let(:contact) { create(:contact, name: "John Doe ##{Random.rand(1e4)}").extend(API::ContactRepresenter) }
   let(:contact_json) { JSON.parse(contact.to_json) }
-  let(:new_contact) { Contact.new.extend(ContactRepresenter) }
+  let(:new_contact) { Contact.new.extend(API::ContactRepresenter) }
 
   describe '#to_json' do
     it 'should serialize to json+hal' do

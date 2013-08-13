@@ -1,19 +1,24 @@
 Cartoque::Application.routes.draw do
+  # Authentication routes
   devise_for :users
+
+  # API
+  namespace :api do
+    resources :contacts
+    resources :apps
+    resources :servers
+  end
+
+  # Webapp
   resources :contacts
-
   resources :apps
-
   resources :servers
-
   get "welcome/index"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+  # Default root
   root 'welcome#index'
 
-  # catch ActionController#RoutingError
+  # Catch-all route to avoid ActionController#RoutingError's
   match '*a', to: 'application#render_404', via: :all
 
   # Example of regular route:

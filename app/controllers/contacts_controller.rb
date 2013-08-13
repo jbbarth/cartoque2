@@ -1,6 +1,4 @@
 class ContactsController < ApplicationController
-  include Roar::Rails::ControllerAdditions
-
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
@@ -10,7 +8,7 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
     #TODO: write a separate representer for contacts collections
-    respond_with @contacts, :represent_items_with => ContactRepresenter
+    respond_with @contacts
   end
 
   # GET /contacts/1

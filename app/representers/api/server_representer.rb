@@ -1,4 +1,4 @@
-module ServerRepresenter
+module API::ServerRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
 

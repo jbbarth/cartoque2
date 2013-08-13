@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe ServerRepresenter do
-  let(:server) { create(:server, name: "server-#{Random.rand(1e4)}").extend(ServerRepresenter) }
+describe API::ServerRepresenter do
+  let(:server) { create(:server, name: "server-#{Random.rand(1e4)}").extend(API::ServerRepresenter) }
   let(:server_json) { JSON.parse(server.to_json) }
-  let(:new_server) { Server.new.extend(ServerRepresenter) }
+  let(:new_server) { Server.new.extend(API::ServerRepresenter) }
 
   describe '#to_json' do
     it 'should serialize to json+hal' do
