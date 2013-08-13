@@ -1,15 +1,22 @@
 class AppsController < ApplicationController
+  include Roar::Rails::ControllerAdditions
+
   before_action :set_app, only: [:show, :edit, :update, :destroy]
+
+  respond_to :html, :json
 
   # GET /apps
   # GET /apps.json
   def index
     @apps = App.all
+    #TODO: write a separate representer for apps collections
+    respond_with @apps, :represent_items_with => AppRepresenter
   end
 
   # GET /apps/1
   # GET /apps/1.json
   def show
+    respond_with @app
   end
 
   # GET /apps/new

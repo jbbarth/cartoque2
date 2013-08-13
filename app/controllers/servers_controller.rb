@@ -1,15 +1,22 @@
 class ServersController < ApplicationController
+  include Roar::Rails::ControllerAdditions
+
   before_action :set_server, only: [:show, :edit, :update, :destroy]
+
+  respond_to :html, :json
 
   # GET /servers
   # GET /servers.json
   def index
     @servers = Server.all
+    #TODO: write a separate representer for servers collections
+    respond_with @servers, :represent_items_with => ServerRepresenter
   end
 
   # GET /servers/1
   # GET /servers/1.json
   def show
+    respond_with @server
   end
 
   # GET /servers/new
