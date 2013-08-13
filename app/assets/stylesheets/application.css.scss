@@ -18,6 +18,10 @@
  * Using @import as recommended in the README
  * because it allows to re-use bootstrap mixins.
 */
+$navbarBackground : #222;
+$navbarBackgroundHighlight : $navbarBackground;
+$navbarLinkColor : #bbb;
+$navbarLinkColorHover : #eee;
 @import "bootstrap";
 
 /*
@@ -30,6 +34,25 @@ body { padding-top: 60px; }
 
 /* general styling */
 
+//brand in navbar
+$navbarLinkVerticalOffset : -1px;
+$navbarBrandVerticalOffset : 1px;
+body > .navbar {
+  .nav a {
+    padding:(10px - $navbarLinkVerticalOffset) 10px (10px + $navbarLinkVerticalOffset) 15px;
+  }
+  .brand {
+    color: #000;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
+    padding:(10px - $navbarBrandVerticalOffset) 20px (10px + $navbarBrandVerticalOffset) 20px;
+    transition: all .2s linear;
+    &:hover {
+      color: #666;
+      text-shadow: none;
+    }
+  }
+}
 //action buttons in tables
 th.action-buttons {
   width: 15%;
