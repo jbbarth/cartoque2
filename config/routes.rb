@@ -3,7 +3,7 @@ Cartoque::Application.routes.draw do
   devise_for :users
 
   # API
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     resources :contacts
     resources :apps
     resources :servers
