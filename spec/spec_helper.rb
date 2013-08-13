@@ -43,6 +43,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # Focus mode
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+
   # Include Devise test helpers for controller specs
   config.include Devise::TestHelpers, type: :controller
   # Useful self-defined macros
