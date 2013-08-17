@@ -7,7 +7,6 @@ class AppsController < ApplicationController
   # GET /apps.json
   def index
     @apps = App.all
-    #TODO: write a separate representer for apps collections
     respond_with @apps
   end
 

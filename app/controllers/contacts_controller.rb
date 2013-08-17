@@ -7,7 +7,6 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
-    #TODO: write a separate representer for contacts collections
     respond_with @contacts
   end
 
