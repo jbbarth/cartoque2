@@ -60,4 +60,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.2'
+  gem 'spring'                        # faster tests!
+  gem 'guard-rspec'                   # automatically launch specs
 end
