@@ -101,12 +101,5 @@ describe API::ServersController do
       delete :destroy, {:id => server.to_param}, valid_session
       expect(response.code).to eq "204"
     end
-
-    it "throws a clean 404 if no id found" do
-      non_existent_id = 0
-      delete :destroy, {:id => non_existent_id}, valid_session
-      expect(response.code).to eq "404"
-      expect(JSON.parse(response.body).keys).to include "message"
-    end
   end
 end

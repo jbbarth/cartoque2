@@ -1,8 +1,6 @@
-class API::AppsController < ApplicationController
+class API::AppsController < API::ApplicationController
   include Roar::Rails::ControllerAdditions
   respond_to :json
-
-  before_action :set_json_format_if_none
 
   # GET /api/apps
   def index

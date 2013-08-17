@@ -1,14 +1,6 @@
-class API::ServersController < ApplicationController
+class API::ServersController < API::ApplicationController
   include Roar::Rails::ControllerAdditions
   respond_to :json
-
-  before_action :set_json_format_if_none
-
-  # Rescue from not found exceptions with a clean 404
-  #TODO: move it up!
-  rescue_from ActiveRecord::RecordNotFound do
-    render json: { message: "Resource or page not found" }, status: :not_found
-  end
 
   # GET /api/servers
   def index
