@@ -4,6 +4,12 @@ class API::ServersController < ApplicationController
 
   before_action :set_json_format_if_none
 
+  # Rescue from not found exceptions with a clean 404
+  #TODO: move it up!
+  rescue_from ActiveRecord::RecordNotFound do
+    render json: { message: "Resource or page not found" }, status: :not_found
+  end
+
   # GET /api/servers
   def index
     #TODO: write a separate representer for servers collections
@@ -17,12 +23,22 @@ class API::ServersController < ApplicationController
 
   # POST /api/servers
   def create
-    respond_with Server.create(server_params)
+    server = Server.new(server_params)
+    if server.save
+      respond_with server
+    else
+      render json: { message: "Validation Failed", errors: server.errors }.to_json
+    end
   end
 
   # PATCH/PUT /api/servers/1
   def update
-    respond_with Server.update(server_params)
+    server = Server.find(params[:id])
+    if server.update(server_params)
+      respond_with server
+    else
+      render json: { message: "Validation Failed", errors: server.errors }.to_json
+    end
   end
 
   # DELETE /api/servers/1
