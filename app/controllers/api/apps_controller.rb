@@ -12,12 +12,22 @@ class API::AppsController < API::ApplicationController
 
   # POST /api/apps
   def create
-    respond_with App.create(app_params)
+    app = App.new(app_params)
+    if app.save
+      respond_with app
+    else
+      render json: { message: "Validation Failed", errors: app.errors }.to_json
+    end
   end
 
   # PATCH/PUT /api/apps/1
   def update
-    respond_with App.update(app_params)
+    app = App.find(params[:id])
+    if app.update(app_params)
+      respond_with app
+    else
+      render json: { message: "Validation Failed", errors: app.errors }.to_json
+    end
   end
 
   # DELETE /api/apps/1

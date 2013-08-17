@@ -12,12 +12,22 @@ class API::ContactsController < API::ApplicationController
 
   # POST /api/contacts
   def create
-    respond_with Contact.create(contact_params)
+    contact = Contact.new(contact_params)
+    if contact.save
+      respond_with contact
+    else
+      render json: { message: "Validation Failed", errors: contact.errors }.to_json
+    end
   end
 
   # PATCH/PUT /api/contacts/1
   def update
-    respond_with Contact.update(contact_params)
+    contact = Contact.find(params[:id])
+    if contact.update(contact_params)
+      respond_with contact
+    else
+      render json: { message: "Validation Failed", errors: contact.errors }.to_json
+    end
   end
 
   # DELETE /api/contacts/1
