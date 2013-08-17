@@ -1,7 +1,4 @@
 class API::ContactsController < API::ApplicationController
-  include Roar::Rails::ControllerAdditions
-  respond_to :json
-
   # GET /api/contacts
   def index
     #TODO: write a separate representer for contacts collections

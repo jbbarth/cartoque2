@@ -1,7 +1,4 @@
 class API::ServersController < API::ApplicationController
-  include Roar::Rails::ControllerAdditions
-  respond_to :json
-
   # GET /api/servers
   def index
     #TODO: write a separate representer for servers collections

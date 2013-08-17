@@ -1,7 +1,4 @@
 class API::AppsController < API::ApplicationController
-  include Roar::Rails::ControllerAdditions
-  respond_to :json
-
   # GET /api/apps
   def index
     #TODO: write a separate representer for apps collections
