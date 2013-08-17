@@ -14,7 +14,7 @@ class API::ApplicationController < ::ApplicationController
   end
 
   # Rescue from not found exceptions with a clean 404
-  rescue_from ActiveRecord::RecordNotFound do
+  rescue_from ActiveRecord::RecordNotFound, ActionView::MissingTemplate do
     render json: { message: "Resource or page not found" }, status: :not_found
   end
 end

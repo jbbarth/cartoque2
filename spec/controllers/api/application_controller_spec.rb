@@ -24,8 +24,15 @@ describe API::ApplicationController do
     Rails.application.reload_routes!
   end
 
-  it "rescues RecordNotFound errors" do
+  it "rescues ActiveRecord::RecordNotFound errors" do
     API::DummyController.any_instance.stub(:index) { Server.find(0) }
+    get :index
+    expect(response.code).to eq "404"
+    expect(JSON.parse(response.body).keys).to include "message"
+  end
+
+  it "rescues ActionView::MissingTemplate errors" do
+    API::DummyController.any_instance.stub(:index) { nil }
     get :index
     expect(response.code).to eq "404"
     expect(JSON.parse(response.body).keys).to include "message"
