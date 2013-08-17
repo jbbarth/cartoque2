@@ -37,4 +37,10 @@ describe API::ApplicationController do
     expect(response.code).to eq "404"
     expect(JSON.parse(response.body).keys).to include "message"
   end
+
+  it "sets the format to JSON if none" do
+    API::DummyController.class_eval { def index; render nothing: true; end }
+    get :index
+    expect(response.headers["Content-Type"]).to match /application\/json/
+  end
 end
