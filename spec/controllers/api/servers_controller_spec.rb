@@ -77,9 +77,9 @@ describe API::ServersController do
       end
 
       it "renders the updated server" do
-        post :create, {:server => { :name => "srv-new-name" }}, valid_session
+        post :create, {:server => { :name => "new-name" }}, valid_session
         json = JSON.parse(response.body)
-        expect(json["name"]).to eq "srv-new-name"
+        expect(json["name"]).to eq "new-name"
       end
     end
 

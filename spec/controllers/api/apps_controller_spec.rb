@@ -77,9 +77,9 @@ describe API::AppsController do
       end
 
       it "renders the updated app" do
-        post :create, {:app => { :name => "srv-new-name" }}, valid_session
+        post :create, {:app => { :name => "new-name" }}, valid_session
         json = JSON.parse(response.body)
-        expect(json["name"]).to eq "srv-new-name"
+        expect(json["name"]).to eq "new-name"
       end
     end
 

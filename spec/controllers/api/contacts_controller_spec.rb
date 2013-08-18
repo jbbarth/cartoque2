@@ -77,9 +77,9 @@ describe API::ContactsController do
       end
 
       it "renders the updated contact" do
-        post :create, {:contact => { :name => "srv-new-name" }}, valid_session
+        post :create, {:contact => { :name => "new-name" }}, valid_session
         json = JSON.parse(response.body)
-        expect(json["name"]).to eq "srv-new-name"
+        expect(json["name"]).to eq "new-name"
       end
     end
 
