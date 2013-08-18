@@ -43,4 +43,10 @@ describe API::ApplicationController do
     get :index
     expect(response.headers["Content-Type"]).to match /application\/json/
   end
+
+  it "disables the CSRF protection when the format is JSON" do
+    API::DummyController.class_eval { def index; render nothing: true; end }
+    API::DummyController.any_instance.should_not_receive(:verify_authenticity_token)
+    get :index
+  end
 end

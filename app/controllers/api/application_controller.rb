@@ -8,9 +8,18 @@ class API::ApplicationController < ::ApplicationController
   respond_to :json
 
   # Sets format to 'json' if it's blank in the request
-  before_action :set_json_format_if_none
+  # The filter is *prepended* so that it's triggered before other filters, which
+  # can then rely on the format easily (see CSRF protection below for instance)
+  prepend_before_action :set_json_format_if_none
   def set_json_format_if_none
     request.format = 'json' if params[:format].blank?
+  end
+
+  # Disable CSRF protection which doesn't make sense for API calls
+  # (taken from the rails doc)
+  skip_before_action :verify_authenticity_token, if: :json_request?
+  def json_request?
+    request.format.json?
   end
 
   # Rescue from not found exceptions with a clean 404
