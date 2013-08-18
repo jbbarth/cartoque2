@@ -22,5 +22,10 @@ describe API::AppsRepresenter do
     it "exposes a link to API apps index" do
       expect(apps_json["_links"]["self"]["href"]).to eq "/api/apps"
     end
+
+    it "exposes a link to create action" do
+      expect(apps_json["_links"]["create"]["href"]).to eq "/api/apps"
+      expect(apps_json["_links"]["create"]["method"]).to eq "POST"
+    end
   end
 end

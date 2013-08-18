@@ -17,4 +17,8 @@ module API::AppsRepresenter
   link :self do
     api_apps_path
   end
+
+  link :create do
+    { href: api_apps_path, method: "POST" }
+  end
 end

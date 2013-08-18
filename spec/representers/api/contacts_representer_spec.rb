@@ -22,5 +22,10 @@ describe API::ContactsRepresenter do
     it "exposes a link to API contacts index" do
       expect(contacts_json["_links"]["self"]["href"]).to eq "/api/contacts"
     end
+
+    it "exposes a link to create action" do
+      expect(contacts_json["_links"]["create"]["href"]).to eq "/api/contacts"
+      expect(contacts_json["_links"]["create"]["method"]).to eq "POST"
+    end
   end
 end

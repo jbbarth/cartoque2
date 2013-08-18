@@ -17,4 +17,8 @@ module API::ContactsRepresenter
   link :self do
     api_contacts_path
   end
+
+  link :create do
+    { href: api_contacts_path, method: "POST" }
+  end
 end

@@ -22,5 +22,10 @@ describe API::ServersRepresenter do
     it "exposes a link to API servers index" do
       expect(servers_json["_links"]["self"]["href"]).to eq "/api/servers"
     end
+
+    it "exposes a link to create action" do
+      expect(servers_json["_links"]["create"]["href"]).to eq "/api/servers"
+      expect(servers_json["_links"]["create"]["method"]).to eq "POST"
+    end
   end
 end

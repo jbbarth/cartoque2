@@ -17,4 +17,8 @@ module API::ServersRepresenter
   link :self do
     api_servers_path
   end
+
+  link :create do
+    { href: api_servers_path, method: "POST" }
+  end
 end
