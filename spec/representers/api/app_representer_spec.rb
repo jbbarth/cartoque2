@@ -15,7 +15,7 @@ describe API::AppRepresenter do
     end
 
     it 'should expose a link to self' do
-      expect(app_json['_links']['self']['href']).to match %r{^/apps/\d+$}
+      expect(app_json['_links']['self']['href']).to match %r{^/api/apps/\d+$}
     end
   end
 

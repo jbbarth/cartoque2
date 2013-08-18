@@ -15,7 +15,7 @@ describe API::ContactRepresenter do
     end
 
     it 'should expose a link to self' do
-      expect(contact_json['_links']['self']['href']).to match %r{^/contacts/\d+$}
+      expect(contact_json['_links']['self']['href']).to match %r{^/api/contacts/\d+$}
     end
   end
 

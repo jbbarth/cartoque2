@@ -15,6 +15,6 @@ module API::AppsRepresenter
   end
 
   link :self do
-    apps_path(self)
+    api_apps_path
   end
 end

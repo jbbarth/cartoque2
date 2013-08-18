@@ -15,6 +15,6 @@ module API::ServersRepresenter
   end
 
   link :self do
-    servers_path(self)
+    api_servers_path
   end
 end

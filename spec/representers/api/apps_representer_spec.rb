@@ -18,5 +18,9 @@ describe API::AppsRepresenter do
       names = apps_json["_embedded"]["apps"].map{|repr| repr["name"]}
       expect(names).to include "app-01", "app-02"
     end
+
+    it "exposes a link to API apps index" do
+      expect(apps_json["_links"]["self"]["href"]).to eq "/api/apps"
+    end
   end
 end

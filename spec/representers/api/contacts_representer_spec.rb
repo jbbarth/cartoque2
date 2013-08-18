@@ -18,5 +18,9 @@ describe API::ContactsRepresenter do
       names = contacts_json["_embedded"]["contacts"].map{|repr| repr["name"]}
       expect(names).to include "contact-01", "contact-02"
     end
+
+    it "exposes a link to API contacts index" do
+      expect(contacts_json["_links"]["self"]["href"]).to eq "/api/contacts"
+    end
   end
 end

@@ -8,6 +8,6 @@ module API::ServerRepresenter
   property :updated_at, writeable: false
 
   link :self do
-    server_path(self)
+    api_server_path(self)
   end
 end

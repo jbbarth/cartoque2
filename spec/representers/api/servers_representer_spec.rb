@@ -18,5 +18,9 @@ describe API::ServersRepresenter do
       names = servers_json["_embedded"]["servers"].map{|repr| repr["name"]}
       expect(names).to include "srv-01", "srv-02"
     end
+
+    it "exposes a link to API servers index" do
+      expect(servers_json["_links"]["self"]["href"]).to eq "/api/servers"
+    end
   end
 end

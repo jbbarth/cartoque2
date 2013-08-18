@@ -8,6 +8,6 @@ module API::ContactRepresenter
   property :updated_at, writeable: false
 
   link :self do
-    contact_path(self)
+    api_contact_path(self)
   end
 end

@@ -15,6 +15,6 @@ module API::ContactsRepresenter
   end
 
   link :self do
-    contacts_path(self)
+    api_contacts_path
   end
 end

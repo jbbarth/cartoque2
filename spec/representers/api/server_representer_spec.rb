@@ -15,7 +15,7 @@ describe API::ServerRepresenter do
     end
 
     it 'should expose a link to self' do
-      expect(server_json['_links']['self']['href']).to match %r{^/servers/\d+$}
+      expect(server_json['_links']['self']['href']).to match %r{^/api/servers/\d+$}
     end
   end
 
