@@ -13,10 +13,22 @@ describe API::RootController do
   render_views
 
   describe "GET index" do
-    it "constitutes an entry point for all API topics" do
+    let(:json) do
       get :index, {}, valid_session
-      json = JSON.parse(response.body)
+      JSON.parse(response.body)
+    end
+
+    it "constitutes an entry point for all API topics" do
       expect(json.keys).to include "_links"
+    end
+
+    it "contains a link to all resource controller present in app/controllers/api/" do
+      controllers = Dir.glob(Rails.root.join("app/controllers/api/*.rb"))
+      resources   = controllers.map{|c| File.basename(c).sub("_controller.rb", "") }
+      exceptions  = %w(application root) # they don't correspond to resources..
+      resources  -= exceptions
+      resources  += %w(self) # add "self", present in json response, so that the assertion is prettier
+      expect(json["_links"].keys.sort).to eq resources.sort
     end
   end
 end
