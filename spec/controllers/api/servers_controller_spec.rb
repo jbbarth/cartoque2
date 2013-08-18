@@ -72,14 +72,15 @@ describe API::ServersController do
     describe "with valid params" do
       it "updates the requested server" do
         server = Server.create! valid_attributes
-        Server.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => server.to_param, :server => { "name" => "MyString" }}, valid_session
+        Server.any_instance.should_receive(:update).with({ "name" => "shiny-new-name" })
+        put :update, {:id => server.to_param, :server => { "name" => "shiny-new-name" }}, valid_session
       end
 
-      it "renders the updated server" do
-        post :create, {:server => { :name => "new-name" }}, valid_session
-        json = JSON.parse(response.body)
-        expect(json["name"]).to eq "new-name"
+      it "return nothing and a 204" do
+        server = Server.create! valid_attributes
+        put :update, {:id => server.to_param, :server => { "name" => "new-name" }}, valid_session
+        expect(response.code).to eq "204"
+        expect(response.body).to eq ""
       end
     end
 

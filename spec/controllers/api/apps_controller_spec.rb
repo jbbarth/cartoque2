@@ -72,14 +72,15 @@ describe API::AppsController do
     describe "with valid params" do
       it "updates the requested app" do
         app = App.create! valid_attributes
-        App.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => app.to_param, :app => { "name" => "MyString" }}, valid_session
+        App.any_instance.should_receive(:update).with({ "name" => "shiny-new-name" })
+        put :update, {:id => app.to_param, :app => { "name" => "shiny-new-name" }}, valid_session
       end
 
-      it "renders the updated app" do
-        post :create, {:app => { :name => "new-name" }}, valid_session
-        json = JSON.parse(response.body)
-        expect(json["name"]).to eq "new-name"
+      it "return nothing and a 204" do
+        app = App.create! valid_attributes
+        put :update, {:id => app.to_param, :app => { "name" => "new-name" }}, valid_session
+        expect(response.code).to eq "204"
+        expect(response.body).to eq ""
       end
     end
 

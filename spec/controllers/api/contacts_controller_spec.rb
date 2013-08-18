@@ -76,10 +76,11 @@ describe API::ContactsController do
         put :update, {:id => contact.to_param, :contact => { "name" => "MyString" }}, valid_session
       end
 
-      it "renders the updated contact" do
-        post :create, {:contact => { :name => "new-name" }}, valid_session
-        json = JSON.parse(response.body)
-        expect(json["name"]).to eq "new-name"
+      it "return nothing and a 204" do
+        contact = Contact.create! valid_attributes
+        put :update, {:id => contact.to_param, :contact => { "name" => "new-name" }}, valid_session
+        expect(response.code).to eq "204"
+        expect(response.body).to eq ""
       end
     end
 
