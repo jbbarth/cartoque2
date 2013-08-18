@@ -18,11 +18,18 @@ describe API::AppsController do
   render_views
 
   describe "GET index" do
-    it "returns a JSON representation with HAL additions provided by roar gem" do
+    before do
       app = App.create! valid_attributes
       get :index, {}, valid_session
-      json = JSON.parse(response.body)
-      expect(json.detect{|s|s["id"] == app.id}.keys).to include "_links"
+      @json = JSON.parse(response.body)
+    end
+
+    it "returns a HAL representation of apps as embedded representations" do
+      expect(@json["_embedded"].keys).to include "apps"
+    end
+
+    it "returns apps as HAL representations witk links etc." do
+      expect(@json["_embedded"]["apps"].first.keys).to include "_links"
     end
   end
 

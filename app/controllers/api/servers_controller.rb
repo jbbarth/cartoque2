@@ -1,8 +1,7 @@
 class API::ServersController < API::ApplicationController
   # GET /api/servers
   def index
-    #TODO: write a separate representer for servers collections
-    respond_with Server.all, represent_items_with: API::ServerRepresenter
+    respond_with Server.all
   end
 
   # GET /api/servers/1

@@ -18,11 +18,18 @@ describe API::ServersController do
   render_views
 
   describe "GET index" do
-    it "returns a JSON representation with HAL additions provided by roar gem" do
+    before do
       server = Server.create! valid_attributes
       get :index, {}, valid_session
-      json = JSON.parse(response.body)
-      expect(json.detect{|s|s["id"] == server.id}.keys).to include "_links"
+      @json = JSON.parse(response.body)
+    end
+
+    it "returns a HAL representation of servers as embedded representations" do
+      expect(@json["_embedded"].keys).to include "servers"
+    end
+
+    it "returns servers as HAL representations witk links etc." do
+      expect(@json["_embedded"]["servers"].first.keys).to include "_links"
     end
   end
 

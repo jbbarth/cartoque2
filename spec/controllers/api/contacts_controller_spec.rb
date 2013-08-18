@@ -18,11 +18,18 @@ describe API::ContactsController do
   render_views
 
   describe "GET index" do
-    it "returns a JSON representation with HAL additions provided by roar gem" do
+    before do
       contact = Contact.create! valid_attributes
       get :index, {}, valid_session
-      json = JSON.parse(response.body)
-      expect(json.detect{|s|s["id"] == contact.id}.keys).to include "_links"
+      @json = JSON.parse(response.body)
+    end
+
+    it "returns a HAL representation of contacts as embedded representations" do
+      expect(@json["_embedded"].keys).to include "contacts"
+    end
+
+    it "returns contacts as HAL representations witk links etc." do
+      expect(@json["_embedded"]["contacts"].first.keys).to include "_links"
     end
   end
 

@@ -1,8 +1,7 @@
 class API::AppsController < API::ApplicationController
   # GET /api/apps
   def index
-    #TODO: write a separate representer for apps collections
-    respond_with App.all, represent_items_with: API::AppRepresenter
+    respond_with App.all
   end
 
   # GET /api/apps/1

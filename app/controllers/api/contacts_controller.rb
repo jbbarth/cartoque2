@@ -1,8 +1,7 @@
 class API::ContactsController < API::ApplicationController
   # GET /api/contacts
   def index
-    #TODO: write a separate representer for contacts collections
-    respond_with Contact.all, represent_items_with: API::ContactRepresenter
+    respond_with Contact.all
   end
 
   # GET /api/contacts/1
