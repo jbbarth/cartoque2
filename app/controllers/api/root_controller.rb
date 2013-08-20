@@ -9,6 +9,7 @@ class API::RootController < API::ApplicationController
         apps:     { href: api_apps_path },
         contacts: { href: api_contacts_path },
         servers:  { href: api_servers_path },
+        users:    { href: api_users_path },
       }
     }
   end

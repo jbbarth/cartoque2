@@ -7,6 +7,7 @@ Cartoque::Application.routes.draw do
     resources :contacts
     resources :apps
     resources :servers
+    resources :users
     root 'root#index'
   end
 
