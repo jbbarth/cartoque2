@@ -12,11 +12,11 @@ describe AppsController do
     end
 
     it "routes to #show" do
-      get("/apps/1").should route_to("apps#show", :id => "1")
+      get("/apps/1").should route_to("apps#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/apps/1/edit").should route_to("apps#edit", :id => "1")
+      get("/apps/1/edit").should route_to("apps#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe AppsController do
     end
 
     it "routes to #update" do
-      put("/apps/1").should route_to("apps#update", :id => "1")
+      put("/apps/1").should route_to("apps#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/apps/1").should route_to("apps#destroy", :id => "1")
+      delete("/apps/1").should route_to("apps#destroy", id: "1")
     end
 
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "servers/edit" do
   before(:each) do
     @server = assign(:server, stub_model(Server,
-      :name => "MyString"
+      name: "MyString"
     ))
   end
 

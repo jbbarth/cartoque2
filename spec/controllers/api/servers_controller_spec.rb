@@ -46,12 +46,12 @@ describe API::ServersController do
     describe "with valid params" do
       it "creates a new Server" do
         expect {
-          post :create, {:server => valid_attributes}, valid_session
+          post :create, {server: valid_attributes}, valid_session
         }.to change(Server, :count).by(1)
       end
 
       it "renders the created server" do
-        post :create, {:server => valid_attributes}, valid_session
+        post :create, {server: valid_attributes}, valid_session
         json = JSON.parse(response.body)
         expect(json["name"]).to eq valid_attributes["name"]
       end
@@ -61,7 +61,7 @@ describe API::ServersController do
       it "returns an error message" do
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        post :create, {:server => { :name => "invalid value" }}, valid_session
+        post :create, {server: { name: "invalid value" }}, valid_session
         json = JSON.parse(response.body)
         expect(json.keys).to include "message", "errors"
       end
@@ -73,12 +73,12 @@ describe API::ServersController do
       it "updates the requested server" do
         server = Server.create! valid_attributes
         Server.any_instance.should_receive(:update).with({ "name" => "shiny-new-name" })
-        put :update, {:id => server.to_param, :server => { "name" => "shiny-new-name" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "shiny-new-name" }}, valid_session
       end
 
       it "return nothing and a 204" do
         server = Server.create! valid_attributes
-        put :update, {:id => server.to_param, :server => { "name" => "new-name" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "new-name" }}, valid_session
         expect(response.code).to eq "204"
         expect(response.body).to eq ""
       end
@@ -89,7 +89,7 @@ describe API::ServersController do
         server = Server.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        put :update, {:id => server.to_param, :server => { "name" => "invalid value" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "invalid value" }}, valid_session
         json = JSON.parse(response.body)
         expect(json.keys).to include "message", "errors"
       end
@@ -100,13 +100,13 @@ describe API::ServersController do
     it "destroys the requested server" do
       server = Server.create! valid_attributes
       expect {
-        delete :destroy, {:id => server.to_param}, valid_session
+        delete :destroy, {id: server.to_param}, valid_session
       }.to change(Server, :count).by(-1)
     end
 
     it "sends a 204 return code" do
       server = Server.create! valid_attributes
-      delete :destroy, {:id => server.to_param}, valid_session
+      delete :destroy, {id: server.to_param}, valid_session
       expect(response.code).to eq "204"
     end
   end

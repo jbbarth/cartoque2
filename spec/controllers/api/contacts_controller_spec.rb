@@ -46,12 +46,12 @@ describe API::ContactsController do
     describe "with valid params" do
       it "creates a new Contact" do
         expect {
-          post :create, {:contact => valid_attributes}, valid_session
+          post :create, {contact: valid_attributes}, valid_session
         }.to change(Contact, :count).by(1)
       end
 
       it "renders the created contact" do
-        post :create, {:contact => valid_attributes}, valid_session
+        post :create, {contact: valid_attributes}, valid_session
         json = JSON.parse(response.body)
         expect(json["name"]).to eq valid_attributes["name"]
       end
@@ -61,7 +61,7 @@ describe API::ContactsController do
       it "returns an error message" do
         # Trigger the behavior that occurs when invalid params are submitted
         Contact.any_instance.stub(:save).and_return(false)
-        post :create, {:contact => { :name => "invalid value" }}, valid_session
+        post :create, {contact: { name: "invalid value" }}, valid_session
         json = JSON.parse(response.body)
         expect(json.keys).to include "message", "errors"
       end
@@ -73,12 +73,12 @@ describe API::ContactsController do
       it "updates the requested contact" do
         contact = Contact.create! valid_attributes
         Contact.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => contact.to_param, :contact => { "name" => "MyString" }}, valid_session
+        put :update, {id: contact.to_param, contact: { "name" => "MyString" }}, valid_session
       end
 
       it "return nothing and a 204" do
         contact = Contact.create! valid_attributes
-        put :update, {:id => contact.to_param, :contact => { "name" => "new-name" }}, valid_session
+        put :update, {id: contact.to_param, contact: { "name" => "new-name" }}, valid_session
         expect(response.code).to eq "204"
         expect(response.body).to eq ""
       end
@@ -89,7 +89,7 @@ describe API::ContactsController do
         contact = Contact.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Contact.any_instance.stub(:save).and_return(false)
-        put :update, {:id => contact.to_param, :contact => { "name" => "invalid value" }}, valid_session
+        put :update, {id: contact.to_param, contact: { "name" => "invalid value" }}, valid_session
         json = JSON.parse(response.body)
         expect(json.keys).to include "message", "errors"
       end
@@ -100,13 +100,13 @@ describe API::ContactsController do
     it "destroys the requested contact" do
       contact = Contact.create! valid_attributes
       expect {
-        delete :destroy, {:id => contact.to_param}, valid_session
+        delete :destroy, {id: contact.to_param}, valid_session
       }.to change(Contact, :count).by(-1)
     end
 
     it "sends a 204 return code" do
       contact = Contact.create! valid_attributes
-      delete :destroy, {:id => contact.to_param}, valid_session
+      delete :destroy, {id: contact.to_param}, valid_session
       expect(response.code).to eq "204"
     end
   end

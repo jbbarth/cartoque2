@@ -43,7 +43,7 @@ describe AppsController do
   describe "GET show" do
     it "assigns the requested app as @app" do
       app = App.create! valid_attributes
-      get :show, {:id => app.to_param}, valid_session
+      get :show, {id: app.to_param}, valid_session
       assigns(:app).should eq(app)
     end
   end
@@ -58,7 +58,7 @@ describe AppsController do
   describe "GET edit" do
     it "assigns the requested app as @app" do
       app = App.create! valid_attributes
-      get :edit, {:id => app.to_param}, valid_session
+      get :edit, {id: app.to_param}, valid_session
       assigns(:app).should eq(app)
     end
   end
@@ -67,18 +67,18 @@ describe AppsController do
     describe "with valid params" do
       it "creates a new App" do
         expect {
-          post :create, {:app => valid_attributes}, valid_session
+          post :create, {app: valid_attributes}, valid_session
         }.to change(App, :count).by(1)
       end
 
       it "assigns a newly created app as @app" do
-        post :create, {:app => valid_attributes}, valid_session
+        post :create, {app: valid_attributes}, valid_session
         assigns(:app).should be_a(App)
         assigns(:app).should be_persisted
       end
 
       it "redirects to the created app" do
-        post :create, {:app => valid_attributes}, valid_session
+        post :create, {app: valid_attributes}, valid_session
         response.should redirect_to(App.last)
       end
     end
@@ -87,14 +87,14 @@ describe AppsController do
       it "assigns a newly created but unsaved app as @app" do
         # Trigger the behavior that occurs when invalid params are submitted
         App.any_instance.stub(:save).and_return(false)
-        post :create, {:app => { "name" => "invalid value" }}, valid_session
+        post :create, {app: { "name" => "invalid value" }}, valid_session
         assigns(:app).should be_a_new(App)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         App.any_instance.stub(:save).and_return(false)
-        post :create, {:app => { "name" => "invalid value" }}, valid_session
+        post :create, {app: { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -109,18 +109,18 @@ describe AppsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         App.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => app.to_param, :app => { "name" => "MyString" }}, valid_session
+        put :update, {id: app.to_param, app: { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested app as @app" do
         app = App.create! valid_attributes
-        put :update, {:id => app.to_param, :app => valid_attributes}, valid_session
+        put :update, {id: app.to_param, app: valid_attributes}, valid_session
         assigns(:app).should eq(app)
       end
 
       it "redirects to the app" do
         app = App.create! valid_attributes
-        put :update, {:id => app.to_param, :app => valid_attributes}, valid_session
+        put :update, {id: app.to_param, app: valid_attributes}, valid_session
         response.should redirect_to(app)
       end
     end
@@ -130,7 +130,7 @@ describe AppsController do
         app = App.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         App.any_instance.stub(:save).and_return(false)
-        put :update, {:id => app.to_param, :app => { "name" => "invalid value" }}, valid_session
+        put :update, {id: app.to_param, app: { "name" => "invalid value" }}, valid_session
         assigns(:app).should eq(app)
       end
 
@@ -138,7 +138,7 @@ describe AppsController do
         app = App.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         App.any_instance.stub(:save).and_return(false)
-        put :update, {:id => app.to_param, :app => { "name" => "invalid value" }}, valid_session
+        put :update, {id: app.to_param, app: { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -148,13 +148,13 @@ describe AppsController do
     it "destroys the requested app" do
       app = App.create! valid_attributes
       expect {
-        delete :destroy, {:id => app.to_param}, valid_session
+        delete :destroy, {id: app.to_param}, valid_session
       }.to change(App, :count).by(-1)
     end
 
     it "redirects to the apps list" do
       app = App.create! valid_attributes
-      delete :destroy, {:id => app.to_param}, valid_session
+      delete :destroy, {id: app.to_param}, valid_session
       response.should redirect_to(apps_url)
     end
   end

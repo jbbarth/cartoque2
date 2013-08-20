@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "contacts/show" do
   before(:each) do
     @contact = assign(:contact, stub_model(Contact,
-      :name => "Name"
+      name: "Name"
     ))
   end
 

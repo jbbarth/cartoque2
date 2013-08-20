@@ -43,7 +43,7 @@ describe ServersController do
   describe "GET show" do
     it "assigns the requested server as @server" do
       server = Server.create! valid_attributes
-      get :show, {:id => server.to_param}, valid_session
+      get :show, {id: server.to_param}, valid_session
       assigns(:server).should eq(server)
     end
   end
@@ -58,7 +58,7 @@ describe ServersController do
   describe "GET edit" do
     it "assigns the requested server as @server" do
       server = Server.create! valid_attributes
-      get :edit, {:id => server.to_param}, valid_session
+      get :edit, {id: server.to_param}, valid_session
       assigns(:server).should eq(server)
     end
   end
@@ -67,18 +67,18 @@ describe ServersController do
     describe "with valid params" do
       it "creates a new Server" do
         expect {
-          post :create, {:server => valid_attributes}, valid_session
+          post :create, {server: valid_attributes}, valid_session
         }.to change(Server, :count).by(1)
       end
 
       it "assigns a newly created server as @server" do
-        post :create, {:server => valid_attributes}, valid_session
+        post :create, {server: valid_attributes}, valid_session
         assigns(:server).should be_a(Server)
         assigns(:server).should be_persisted
       end
 
       it "redirects to the created server" do
-        post :create, {:server => valid_attributes}, valid_session
+        post :create, {server: valid_attributes}, valid_session
         response.should redirect_to(Server.last)
       end
     end
@@ -87,14 +87,14 @@ describe ServersController do
       it "assigns a newly created but unsaved server as @server" do
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        post :create, {:server => { "name" => "invalid value" }}, valid_session
+        post :create, {server: { "name" => "invalid value" }}, valid_session
         assigns(:server).should be_a_new(Server)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        post :create, {:server => { "name" => "invalid value" }}, valid_session
+        post :create, {server: { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -109,18 +109,18 @@ describe ServersController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Server.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => server.to_param, :server => { "name" => "MyString" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested server as @server" do
         server = Server.create! valid_attributes
-        put :update, {:id => server.to_param, :server => valid_attributes}, valid_session
+        put :update, {id: server.to_param, server: valid_attributes}, valid_session
         assigns(:server).should eq(server)
       end
 
       it "redirects to the server" do
         server = Server.create! valid_attributes
-        put :update, {:id => server.to_param, :server => valid_attributes}, valid_session
+        put :update, {id: server.to_param, server: valid_attributes}, valid_session
         response.should redirect_to(server)
       end
     end
@@ -130,7 +130,7 @@ describe ServersController do
         server = Server.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        put :update, {:id => server.to_param, :server => { "name" => "invalid value" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "invalid value" }}, valid_session
         assigns(:server).should eq(server)
       end
 
@@ -138,7 +138,7 @@ describe ServersController do
         server = Server.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Server.any_instance.stub(:save).and_return(false)
-        put :update, {:id => server.to_param, :server => { "name" => "invalid value" }}, valid_session
+        put :update, {id: server.to_param, server: { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -148,13 +148,13 @@ describe ServersController do
     it "destroys the requested server" do
       server = Server.create! valid_attributes
       expect {
-        delete :destroy, {:id => server.to_param}, valid_session
+        delete :destroy, {id: server.to_param}, valid_session
       }.to change(Server, :count).by(-1)
     end
 
     it "redirects to the servers list" do
       server = Server.create! valid_attributes
-      delete :destroy, {:id => server.to_param}, valid_session
+      delete :destroy, {id: server.to_param}, valid_session
       response.should redirect_to(servers_url)
     end
   end

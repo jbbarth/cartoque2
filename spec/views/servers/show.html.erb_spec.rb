@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "servers/show" do
   before(:each) do
     @server = assign(:server, stub_model(Server,
-      :name => "Name"
+      name: "Name"
     ))
   end
 

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "servers/new" do
   before(:each) do
     assign(:server, stub_model(Server,
-      :name => "MyString"
+      name: "MyString"
     ).as_new_record)
   end
 

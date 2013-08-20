@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "apps/show" do
   before(:each) do
     @app = assign(:app, stub_model(App,
-      :name => "Name"
+      name: "Name"
     ))
   end
 

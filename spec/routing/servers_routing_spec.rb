@@ -12,11 +12,11 @@ describe ServersController do
     end
 
     it "routes to #show" do
-      get("/servers/1").should route_to("servers#show", :id => "1")
+      get("/servers/1").should route_to("servers#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/servers/1/edit").should route_to("servers#edit", :id => "1")
+      get("/servers/1/edit").should route_to("servers#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe ServersController do
     end
 
     it "routes to #update" do
-      put("/servers/1").should route_to("servers#update", :id => "1")
+      put("/servers/1").should route_to("servers#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/servers/1").should route_to("servers#destroy", :id => "1")
+      delete("/servers/1").should route_to("servers#destroy", id: "1")
     end
 
   end
