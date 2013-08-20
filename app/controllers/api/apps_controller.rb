@@ -15,7 +15,7 @@ class API::AppsController < API::ApplicationController
     if app.save
       respond_with app
     else
-      render json: { message: "Validation Failed", errors: app.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: app.errors }
     end
   end
 
@@ -25,7 +25,7 @@ class API::AppsController < API::ApplicationController
     if app.update(app_params)
       respond_with app
     else
-      render json: { message: "Validation Failed", errors: app.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: app.errors }
     end
   end
 

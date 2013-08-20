@@ -63,6 +63,7 @@ describe API::AppsController do
         App.any_instance.stub(:save).and_return(false)
         post :create, {app: { name: "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end
@@ -91,6 +92,7 @@ describe API::AppsController do
         App.any_instance.stub(:save).and_return(false)
         put :update, {id: app.to_param, app: { "name" => "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end

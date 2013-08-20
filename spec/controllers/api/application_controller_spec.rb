@@ -49,4 +49,32 @@ describe API::ApplicationController do
     API::DummyController.any_instance.should_not_receive(:verify_authenticity_token)
     get :index
   end
+
+  context "#render_error" do
+    it "returns a 422 by default" do
+      API::DummyController.class_eval { def index; render_error({}); end }
+      get :index
+      expect(response.code).to eq "422"
+    end
+
+    it "allows overriding the status code returned" do
+      API::DummyController.class_eval { def index; render_error({status: 666}); end }
+      get :index
+      expect(response.code).to eq "666"
+    end
+
+    it "returns a default hash if nothing provided" do
+      API::DummyController.class_eval { def index; render_error({}); end }
+      get :index
+      json = JSON.parse(response.body)
+      expect(json["message"]).to match /error occurred/
+    end
+
+    it "allows providing our own hahs as a return value" do
+      API::DummyController.class_eval { def index; render_error({json: {message: "Hey"}}); end }
+      get :index
+      json = JSON.parse(response.body)
+      expect(json["message"]).to eq "Hey"
+    end
+  end
 end

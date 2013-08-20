@@ -26,4 +26,15 @@ class API::ApplicationController < ::ApplicationController
   rescue_from ActiveRecord::RecordNotFound, ActionView::MissingTemplate do
     render json: { message: "Resource or page not found" }, status: :not_found
   end
+
+  # Renders errors as json
+  #
+  # Returns a 422 error code by default (unprocessable entity, often validation
+  # errors), but this can be overriden if the hash provided as argument has a
+  # :status key, then it takes its value as a return code.
+  def render_error(hash)
+    hash[:json] = { message: "An unexpected error occurred" } if hash[:json].blank?
+    status = hash[:status] || :unprocessable_entity
+    render json: hash[:json], status: status
+  end
 end

@@ -15,7 +15,7 @@ class API::UsersController < API::ApplicationController
     if user.save
       respond_with user
     else
-      render json: { message: "Validation Failed", errors: user.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: user.errors }
     end
   end
 
@@ -25,7 +25,7 @@ class API::UsersController < API::ApplicationController
     if user.update(user_params)
       respond_with user
     else
-      render json: { message: "Validation Failed", errors: user.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: user.errors }
     end
   end
 

@@ -15,7 +15,7 @@ class API::ServersController < API::ApplicationController
     if server.save
       respond_with server
     else
-      render json: { message: "Validation Failed", errors: server.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: server.errors }
     end
   end
 
@@ -25,7 +25,7 @@ class API::ServersController < API::ApplicationController
     if server.update(server_params)
       respond_with server
     else
-      render json: { message: "Validation Failed", errors: server.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: server.errors }
     end
   end
 

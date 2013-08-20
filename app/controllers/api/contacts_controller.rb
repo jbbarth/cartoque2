@@ -15,7 +15,7 @@ class API::ContactsController < API::ApplicationController
     if contact.save
       respond_with contact
     else
-      render json: { message: "Validation Failed", errors: contact.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: contact.errors }
     end
   end
 
@@ -25,7 +25,7 @@ class API::ContactsController < API::ApplicationController
     if contact.update(contact_params)
       respond_with contact
     else
-      render json: { message: "Validation Failed", errors: contact.errors }.to_json
+      render_error json: { message: "Validation Failed", errors: contact.errors }
     end
   end
 

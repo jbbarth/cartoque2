@@ -63,6 +63,7 @@ describe API::UsersController do
         User.any_instance.stub(:save).and_return(false)
         post :create, {user: { email: "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end
@@ -91,6 +92,7 @@ describe API::UsersController do
         User.any_instance.stub(:save).and_return(false)
         put :update, {id: user.to_param, user: { "email" => "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end

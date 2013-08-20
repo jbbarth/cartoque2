@@ -63,6 +63,7 @@ describe API::ContactsController do
         Contact.any_instance.stub(:save).and_return(false)
         post :create, {contact: { name: "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end
@@ -91,6 +92,7 @@ describe API::ContactsController do
         Contact.any_instance.stub(:save).and_return(false)
         put :update, {id: contact.to_param, contact: { "name" => "invalid value" }}, valid_session
         json = JSON.parse(response.body)
+        expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
       end
     end
