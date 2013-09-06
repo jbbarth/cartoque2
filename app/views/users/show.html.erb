@@ -1,0 +1,11 @@
+<h1>Settings</h1>
+
+<%= render 'layouts/navbar_settings' %>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -15,6 +15,7 @@ Cartoque::Application.routes.draw do
   resources :contacts
   resources :apps
   resources :servers
+  resources :users
   get "welcome/index"
 
   # Default root
