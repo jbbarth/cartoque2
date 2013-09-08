@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<div class=page-wrap>
+
   <%= render 'layouts/navbar' %>
 
   <div class=container>
@@ -15,6 +17,14 @@
     <%= content_tag(:div, class: "alert alert-error")   { alert  } if alert %>
     <%= yield %>
   </div>
+
+</div>
+
+<div class=site-footer>
+  <div class=container>
+    Cartoque
+  </div>
+</div>
 
 </body>
 </html>

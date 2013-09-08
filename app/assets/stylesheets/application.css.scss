@@ -29,9 +29,6 @@ $navbarLinkColorHover : #000;
  */
 @import "font-awesome";
 
-/* don't hide body under navbar */
-body { padding-top: 60px; }
-
 /* general styling */
 
 //brand in navbar
@@ -128,5 +125,35 @@ html {
       background: #08c + 60;
       padding: 0.1em 0.25em;
     }
+  }
+}
+
+// sticky footer
+// http://css-tricks.com/snippets/css/sticky-footer/
+$footerHeight : 30px;
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -$footerHeight;
+  /* don't hide body under navbar */
+  @include box-sizing(border-box);
+  padding-top: $navbarHeight + 10px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: $footerHeight;
+}
+// footer styles
+.site-footer {
+  font-size: 90%;
+  color: #999;
+  text-align: center;
+  .container {
+    border-top: 1px solid #ddd;
   }
 }
