@@ -38,6 +38,9 @@ gem 'roar-rails'
 # Authentication
 gem 'devise', '~> 3.0.0'
 
+# Pagination
+gem 'will_paginate', '~> 3.0.4'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

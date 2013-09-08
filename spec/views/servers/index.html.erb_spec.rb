@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "servers/index" do
   before(:each) do
+    view.stub(:will_paginate) #avoid errors with will_paginate
     assign(:servers, [
       stub_model(Server,
         name: "Name"

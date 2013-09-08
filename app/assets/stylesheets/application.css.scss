@@ -86,3 +86,47 @@ td.action-buttons {
 html {
   overflow-y: scroll;
 }
+// pagination
+.pagination {
+  background: #fff;
+  cursor: default;
+  height: 22px;
+  margin: 5px 0 20px;
+  float: right;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    display: none;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #08c;
+    color: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: #08c;
+    &:hover, &:focus {
+      color: #005580;
+      background: #eef;
+    }
+  }
+  .page_info {
+    background: #08c;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #000033;
+      background: #08c + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
+}

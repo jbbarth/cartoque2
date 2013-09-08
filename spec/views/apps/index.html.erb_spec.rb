@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "apps/index" do
   before(:each) do
+    view.stub(:will_paginate) #avoid errors with will_paginate
     assign(:apps, [
       stub_model(App,
         name: "Name"

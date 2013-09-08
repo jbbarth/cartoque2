@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "contacts/index" do
   before(:each) do
+    view.stub(:will_paginate) #avoid errors with will_paginate
     assign(:contacts, [
       stub_model(Contact,
         name: "Name"
