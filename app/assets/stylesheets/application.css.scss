@@ -81,3 +81,8 @@ td.action-buttons {
     margin:0 0 30px 20px;
   }
 }
+// force vertical scrollbar in any case to avoid centering jumps
+// http://css-tricks.com/snippets/css/force-vertical-scrollbar/
+html {
+  overflow-y: scroll;
+}
