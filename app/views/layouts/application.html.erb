@@ -21,9 +21,11 @@
 </div>
 
 <div class=site-footer>
+  <% if signed_in? %>
   <div class=container>
-    Cartoque
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
   </div>
+  <% end %>
 </div>
 
 </body>

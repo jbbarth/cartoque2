@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe "layouts/application" do
+  before do
+    view.stub(:signed_in?, false)
+  end
+
   it "displays notice if present" do
     flash.now[:notice] = "A warning"
     render

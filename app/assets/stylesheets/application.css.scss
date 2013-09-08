@@ -156,4 +156,10 @@ html, body {
   .container {
     border-top: 1px solid #ddd;
   }
+  a, a:visited {
+    color: #888;
+  }
+  a:hover {
+    color: #005580;
+  }
 }
