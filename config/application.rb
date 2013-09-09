@@ -8,6 +8,10 @@ Bundler.require(:default, Rails.env)
 
 module Cartoque
   class Application < Rails::Application
+    # Version of the app
+    # http://semver.org ?
+    VERSION = '0.4.0-alpha'
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
