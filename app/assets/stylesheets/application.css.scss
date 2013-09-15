@@ -30,6 +30,10 @@ $navbarLinkColorHover : #000;
 @import "font-awesome";
 
 /* general styling */
+h1 {
+  margin-top: 20px;
+  font-weight: normal;
+}
 
 //brand in navbar
 //TODO: test offsets on various platforms !
