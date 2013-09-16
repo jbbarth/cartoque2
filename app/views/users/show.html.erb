@@ -2,10 +2,9 @@
 
 <%= render 'layouts/navbar_settings' %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+  </div>
+  <h2><%= @user.email %></h2>
+</h2>

@@ -1,6 +1,9 @@
-<h1>Editing application</h1>
+<h1><%= link_to "Applications", apps_path %></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @app %> |
-<%= link_to 'Back', apps_path %>
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Show', @app %>
+  </div>
+  <h2><%= @app.name %></h2>
+  <%= render 'form' %>
+</div>

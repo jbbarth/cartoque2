@@ -1,6 +1,9 @@
-<h1>Editing contact</h1>
+<h1><%= link_to "Contacts", contacts_path %></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Show', @contact %>
+  </div>
+  <h2><%= @contact.name %></h2>
+  <%= render 'form' %>
+</div>

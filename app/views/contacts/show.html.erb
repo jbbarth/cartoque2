@@ -1,9 +1,8 @@
-<h1>Contact: <%= @contact.name %></h1>
+<h1><%= link_to "Contacts", contacts_path %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @contact.name %>
-</p>
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Edit', edit_contact_path(@contact) %>
+  </div>
+  <h2><%= @contact.name %></h2>
+</div>

@@ -33,7 +33,19 @@ $navbarLinkColorHover : #000;
 h1 {
   margin-top: 20px;
   font-weight: normal;
+  a {
+    color: #666;
+    display: block;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
+h2 {
+  font-weight:normal;
+  margin:0 0 12px;
+}
+
 
 //brand in navbar
 //TODO: test offsets on various platforms !
@@ -178,4 +190,16 @@ html, body {
   input {
     margin-top: 10px;
   }
+}
+
+//show sections
+.show {
+  padding: 12px 18px;
+  height: 100%;
+  min-height: 400px;
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px;
+  @include box-shadow(0 0 5px #bbb);
+  @include box-sizing(border-box);
 }

@@ -2,7 +2,10 @@
 
 <%= render 'layouts/navbar_settings' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Show', @user %>
+  </div>
+  <h2><%= @user.email %></h2>
+  <%= render 'form' %>
+</h2>
