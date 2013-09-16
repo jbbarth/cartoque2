@@ -26,4 +26,9 @@ describe "layouts/application" do
     render
     assert_select "div.alert-error", count: 0
   end
+
+  it "doesn't show links in navbar if not logged in" do
+    render
+    assert_select ".navbar li a", count: 0
+  end
 end
