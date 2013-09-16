@@ -19,3 +19,8 @@
 //
 //Loads every local js next
 //= require_tree .
+
+$(function() {
+  //hide alert messages after 6s
+  $('#flash').delay(6000).fadeOut(300)
+})

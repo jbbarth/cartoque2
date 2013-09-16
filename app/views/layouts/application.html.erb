@@ -13,8 +13,11 @@
   <%= render 'layouts/navbar' %>
 
   <div class=container>
-    <%= content_tag(:div, class: "alert alert-warning") { notice } if notice %>
-    <%= content_tag(:div, class: "alert alert-error")   { alert  } if alert %>
+    <%= content_tag :div, id: "flash" do %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "flash-#{name}" %>
+      <% end %>
+    <% end unless flash.empty? %>
     <%= yield %>
   </div>
 
