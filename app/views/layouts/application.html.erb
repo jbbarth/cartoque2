@@ -23,7 +23,7 @@
 <div class=site-footer>
   <% if signed_in? %>
   <div class=container>
-    Cartoque v<%= Cartoque::Application::VERSION %>
+    <%= link_to "Cartoque v#{Cartoque::Application::VERSION}", "http://cartoque.org/" %>
     -
     <%= link_to "Log out", destroy_user_session_path, method: :delete %>
   </div>
