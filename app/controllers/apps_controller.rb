@@ -32,7 +32,7 @@ class AppsController < ApplicationController
 
     respond_to do |format|
       if @app.save
-        format.html { redirect_to @app, notice: 'App was successfully created.' }
+        format.html { redirect_to @app, notice: 'Application was successfully created.' }
         format.json { render action: 'show', status: :created, location: @app }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ class AppsController < ApplicationController
   def update
     respond_to do |format|
       if @app.update(app_params)
-        format.html { redirect_to @app, notice: 'App was successfully updated.' }
+        format.html { redirect_to @app, notice: 'Application was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +60,7 @@ class AppsController < ApplicationController
   def destroy
     @app.destroy
     respond_to do |format|
-      format.html { redirect_to apps_url }
+      format.html { redirect_to apps_url, notice: 'Application was successfully removed.' }
       format.json { head :no_content }
     end
   end

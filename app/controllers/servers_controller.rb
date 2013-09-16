@@ -60,7 +60,7 @@ class ServersController < ApplicationController
   def destroy
     @server.destroy
     respond_to do |format|
-      format.html { redirect_to servers_url }
+      format.html { redirect_to servers_url, notice: 'Server was successfully removed.' }
       format.json { head :no_content }
     end
   end
