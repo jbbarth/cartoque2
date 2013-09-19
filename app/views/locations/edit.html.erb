@@ -1,0 +1,11 @@
+<h1>Settings</h1>
+
+<%= render 'layouts/navbar_settings', active: :locations %>
+
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Show', @location %>
+  </div>
+  <h2><%= @location.name %></h2>
+  <%= render 'form' %>
+</div>

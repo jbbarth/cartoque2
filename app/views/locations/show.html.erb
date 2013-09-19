@@ -1,0 +1,14 @@
+<h1>Settings</h1>
+
+<%= render 'layouts/navbar_settings', active: :locations %>
+
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Edit', edit_location_path(@location) %>
+  </div>
+  <h2><%= @location.name %></h2>
+  <p>
+    <strong>Name:</strong>
+    <%= @location.name %>
+  </p>
+</div>

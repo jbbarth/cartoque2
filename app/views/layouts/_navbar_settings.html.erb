@@ -1,3 +1,8 @@
 <ul class="nav nav-tabs nav-settings">
-  <li class=active><%= link_to "Users", users_path %></li>
+  <% {
+        "Users"      => users_path,
+        "Locations"  => locations_path
+     }.each do |title, path| %>
+    <%= content_tag :li, link_to(title, path), class: (active.to_s == title.downcase ? "active" : nil) %>
+  <% end %>
 </ul>

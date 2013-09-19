@@ -10,6 +10,7 @@ class API::RootController < API::ApplicationController
         contacts: { href: api_contacts_path },
         servers:  { href: api_servers_path },
         users:    { href: api_users_path },
+        locations: { href: api_locations_path },
         #hook for generators
       }
     }
