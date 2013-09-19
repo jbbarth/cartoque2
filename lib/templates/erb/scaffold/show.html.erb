@@ -1,0 +1,14 @@
+<h1><%%= link_to "<%= human_name.pluralize %>", <%= index_helper %>_path %></h1>
+
+<div class=show>
+  <div class=pull-right>
+    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %>
+  </div>
+  <h2><%%= @<%= singular_table_name %>.<%= attributes.detect{|attr|attr.name=="name"} ? "name" : "to_s" %> %></h2>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <p>
+    <strong><%= attribute.human_name %>:</strong>
+    <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+  </p>
+<% end -%>
+</div>

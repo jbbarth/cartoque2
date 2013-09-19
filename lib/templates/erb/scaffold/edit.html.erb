@@ -1,0 +1,9 @@
+<h1><%%= link_to "<%= human_name.pluralize %>", <%= index_helper %>_path %></h1>
+
+<div class=show>
+  <div class=pull-right>
+    <%%= link_to 'Show', @<%= singular_table_name %> %>
+  </div>
+  <h2><%%= @<%= singular_table_name %>.<%= attributes.detect{|attr|attr.name=="name"} ? "name" : "to_s" %> %></h2>
+  <%%= render 'form' %>
+</div>
