@@ -37,6 +37,8 @@ class FullScaffoldGenerator < Rails::Generators::ScaffoldGenerator
     #remove "pending" directives
     gsub_file "spec/models/#{singular_name}_spec.rb", /\n\s*pending [^\n]+\n/m, "\n"
     gsub_file "spec/helpers/#{plural_name}_helper_spec.rb", /\n\s*pending [^\n]+\n/m, "\n"
+    #remove integration test/unit test
+    remove_file "test/"
   end
 
 protected
