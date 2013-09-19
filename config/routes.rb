@@ -8,6 +8,7 @@ Cartoque::Application.routes.draw do
     resources :apps
     resources :servers
     resources :users
+    #hook for generators
     root 'root#index'
   end
 
