@@ -23,4 +23,12 @@
 $(function() {
   //hide alert messages after 6s
   $('#flash').delay(6000).fadeOut(300)
+
+  //back to index when a show/edit window is open
+  $(document).keyup(function(e) {
+    if ((e.keyCode == 27) && $('.show').length) {
+      var elem = $('h1 a, ul.nav li.active a')[0]
+      if (elem) { elem.click() }
+    }
+  })
 })
