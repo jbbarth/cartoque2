@@ -27,6 +27,12 @@ class API::ApplicationController < ::ApplicationController
     render json: { message: "Resource or page not found" }, status: :not_found
   end
 
+  # Rescue from errors on missing parameters
+  rescue_from ActionController::ParameterMissing do |e|
+    render json: { message: "Missing parameter", exception: { name: e.exception.class.name, message: e.message } },
+           status: :unprocessable_entity
+  end
+
   # Renders errors as json
   #
   # Returns a 422 error code by default (unprocessable entity, often validation

@@ -38,6 +38,15 @@ describe API::ApplicationController do
     expect(JSON.parse(response.body).keys).to include "message"
   end
 
+  it "rescues ActionController::ParameterMissing errors" do
+    API::DummyController.class_eval { def index; prms = params.require(:nonexistent); end }
+    get :index
+    expect(response.code).to eq "422"
+    hash = JSON.parse(response.body)
+    expect(hash.keys).to include "message", "exception"
+    expect(hash["exception"]["message"]).to match /nonexistent/
+  end
+
   it "sets the format to JSON if none" do
     API::DummyController.class_eval { def index; render nothing: true; end }
     get :index
