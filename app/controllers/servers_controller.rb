@@ -6,7 +6,7 @@ class ServersController < ApplicationController
   # GET /servers
   # GET /servers.json
   def index
-    @servers = Server.page(params[:page]).per_page(50)
+    @servers = Server.order(:name).page(params[:page]).per_page(50)
     respond_with @servers
   end
 

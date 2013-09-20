@@ -6,7 +6,7 @@ class AppsController < ApplicationController
   # GET /apps
   # GET /apps.json
   def index
-    @apps = App.page(params[:page]).per_page(50)
+    @apps = App.order(:name).page(params[:page]).per_page(50)
     respond_with @apps
   end
 

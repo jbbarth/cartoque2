@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.page(params[:page]).per_page(50)
+    @locations = Location.order(:name).page(params[:page]).per_page(50)
   end
 
   # GET /locations/1
