@@ -32,4 +32,8 @@ $(function() {
     var elem = $('h1 a, ul.nav li.active a')[0]
     if (elem && $('.show').length) { elem.click() }
   }) 
+  //shortcuts for some links
+  key('n', function(e) {
+    $('#new').length && $('#new')[0].click()
+  })
 })
