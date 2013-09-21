@@ -8,18 +8,16 @@
       </a>
       <%= link_to 'Cartoque', root_path, class: 'brand' %>
       <div class="nav-collapse">
+        <% if signed_in? %>
         <ul class="nav">
-          <% if signed_in? %>
-            <li><%= link_to 'Applications', apps_path %></li>
-            <li><%= link_to 'Servers', servers_path %></li>
-            <li><%= link_to 'Contacts', contacts_path %></li>
-          <% end %>
+          <li><%= link_to 'Applications', apps_path %></li>
+          <li><%= link_to 'Servers', servers_path %></li>
+          <li><%= link_to 'Contacts', contacts_path %></li>
         </ul>
         <ul class="nav pull-right">
-          <% if signed_in? %>
-            <li><%= link_to content_tag(:i, '', class: 'icon-cog'), users_path %></li>
-          <% end %>
+          <li><%= link_to content_tag(:i, '', class: 'icon-cog'), users_path %></li>
         </ul>
+        <% end %>
       </div>
     </div>
   </div>
