@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  before_action :build_possible_locations_tree, only: [:new, :create, :edit, :update]
+  before_action :build_possible_locations_tree, only: [:edit, :update]
 
   # GET /locations
   def index
@@ -14,6 +14,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
+    build_possible_locations_tree
   end
 
   # GET /locations/1/edit
@@ -23,6 +24,7 @@ class LocationsController < ApplicationController
   # POST /locations
   def create
     @location = Location.new(location_params)
+    build_possible_locations_tree
 
     if @location.save
       redirect_to @location, notice: 'Location was successfully created.'
