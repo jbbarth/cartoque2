@@ -15,12 +15,10 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-          <td><%= link_to location.name, location %></td>
-          <td class=action-buttons><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= raw "&nbsp;" * location.depth * 5 %><%= link_to location.name, location %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_location_path(location) %></td>
         <td class=action-buttons><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= will_paginate @locations, previous_label: h("<"), next_label: h(">") %>

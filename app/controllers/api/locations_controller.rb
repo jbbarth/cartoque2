@@ -37,6 +37,6 @@ class API::LocationsController < API::ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def location_params
-    params.require(:location).permit(:name)
+    params.require(:location).permit(:name, :parent_id)
   end
 end

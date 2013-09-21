@@ -83,6 +83,16 @@ describe API::LocationsController do
         expect(response.code).to eq "204"
         expect(response.body).to eq ""
       end
+
+      it "allows definning a parent" do
+        parent = Location.create!(valid_attributes)
+        child = Location.create!(valid_attributes)
+        # Trigger the behavior that occurs when invalid params are submitted
+        put :update, {id: child.to_param, location: { parent_id: parent.id }}, valid_session
+        expect(response.code).to eq "204"
+        expect(child.reload.parent).to eq parent
+        expect(parent.reload.children).to eq [child]
+      end
     end
 
     describe "with invalid params" do
@@ -94,6 +104,17 @@ describe API::LocationsController do
         json = JSON.parse(response.body)
         expect(response.code).to eq "422"
         expect(json.keys).to include "message", "errors"
+      end
+
+      it "doesn't allow definning cyclic parentship" do
+        parent = Location.create!(valid_attributes)
+        child = Location.create!(valid_attributes.merge(parent: parent))
+        # Trigger the behavior that occurs when invalid params are submitted
+        put :update, {id: parent.to_param, location: { parent_id: child.id }}, valid_session
+        expect(response.code).to eq "422"
+        json = JSON.parse(response.body)
+        expect(json.keys).to include "message", "errors"
+        expect(json["errors"]["base"][0]).to match /descendant of itself/
       end
     end
   end

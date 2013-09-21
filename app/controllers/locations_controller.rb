@@ -1,9 +1,10 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :build_possible_locations_tree, only: [:new, :create, :edit, :update]
 
   # GET /locations
   def index
-    @locations = Location.order(:name).page(params[:page]).per_page(50)
+    @locations = Location.arrange_as_array
   end
 
   # GET /locations/1
@@ -53,6 +54,11 @@ class LocationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def location_params
-      params.require(:location).permit(:name)
+      params.require(:location).permit(:name, :parent_id)
+    end
+
+    #see: https://github.com/stefankroes/ancestry/wiki/Creating-a-selectbox-for-a-form-using-ancestry
+    def build_possible_locations_tree
+      @locations = Location.arrange_as_array({order: 'name'}, @location.possible_parents)
     end
 end
