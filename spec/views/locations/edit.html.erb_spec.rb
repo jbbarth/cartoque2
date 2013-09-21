@@ -5,6 +5,7 @@ describe "locations/edit" do
     @location = assign(:location, stub_model(Location,
       :name => "MyString"
     ))
+    assign(:locations, [])
   end
 
   it "renders the edit location form" do

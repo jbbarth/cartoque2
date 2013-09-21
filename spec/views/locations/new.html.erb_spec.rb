@@ -5,6 +5,7 @@ describe "locations/new" do
     assign(:location, stub_model(Location,
       :name => "MyString"
     ).as_new_record)
+    assign(:locations, [])
   end
 
   it "renders new location form" do
