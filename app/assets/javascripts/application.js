@@ -24,16 +24,22 @@
 //= require_tree .
 
 $(function() {
+  //helper methods
+  function clickFirst(selector) {
+    $(selector).length && $(selector)[0].click()
+  }
+
   //hide alert messages after 6s
   $('#flash').delay(6000).fadeOut(300)
 
   //back to index when a show/edit window is open
   key('esc', function(e) {
-    var elem = $('h1 a, ul.nav li.active a')[0]
-    if (elem && $('.show').length) { elem.click() }
+    if ($('.show').length) {
+      clickFirst('h1 a, ul.nav li.active a')
+    }
   }) 
   //shortcuts for some links
   key('n', function(e) {
-    $('#new').length && $('#new')[0].click()
+    clickFirst('#new')
   })
 })
