@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.arrange_as_array
+    @locations = Location.arrange_as_array(order: 'name')
   end
 
   # GET /locations/1
