@@ -17,6 +17,9 @@
 //Loads all Bootstrap javascripts
 //= require bootstrap
 //
+//Loads madrobby's keymaster.js (http://github.com/madrobby/keymaster.js
+//= require keymaster
+//
 //Loads every local js next
 //= require_tree .
 
@@ -25,10 +28,8 @@ $(function() {
   $('#flash').delay(6000).fadeOut(300)
 
   //back to index when a show/edit window is open
-  $(document).keyup(function(e) {
-    if ((e.keyCode == 27) && $('.show').length) {
-      var elem = $('h1 a, ul.nav li.active a')[0]
-      if (elem) { elem.click() }
-    }
-  })
+  key('esc', function(e) {
+    var elem = $('h1 a, ul.nav li.active a')[0]
+    if (elem && $('.show').length) { elem.click() }
+  }) 
 })
