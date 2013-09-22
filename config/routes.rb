@@ -1,6 +1,4 @@
 Cartoque::Application.routes.draw do
-  resources :locations
-
   # Authentication routes
   devise_for :users
 
@@ -20,6 +18,7 @@ Cartoque::Application.routes.draw do
   resources :apps
   resources :servers
   resources :users
+  resources :locations
   get "welcome/index"
 
   # Default root
