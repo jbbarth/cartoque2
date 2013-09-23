@@ -37,6 +37,9 @@ $(function() {
     if ($('.show').length) {
       clickFirst($('h1 a, ul.nav li.active a'))
     }
+    if ($('.modal').length) {
+      $('.modal').modal('hide')
+    }
   }) 
   //shortcuts for some links
   key('n', function(e) {
@@ -58,4 +61,15 @@ $(function() {
       clickFirst(nextTab.find('a'))
     }
   })
+  //shortcuts help modal
+  //doesn't work in keymaster so... see: https://github.com/madrobby/keymaster/issues/59
+  $(document).on('keyup',function(e) {
+    var $target = $(e.target)
+    if (e.keyCode == 191 && !$target.is("input") && !$target.is("textarea") && !$target.is("select")) {
+      $.getScript("/help/keyboard")
+    }
+  })
+///  $(document).on('keyup', function(e) {
+///    console.log(e.keyCode)
+///  })
 })

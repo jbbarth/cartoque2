@@ -211,3 +211,25 @@ html, body {
   @include box-shadow(0 0 5px #bbb);
   @include box-sizing(border-box);
 }
+
+//help
+.help-modal {
+  width: 800px;
+  margin-left: -400px; //=width/2
+}
+.help-keyboard-shortcuts {
+  td {
+    padding:4px 8px;
+  }
+  tr td:first-child {
+    text-align: right;
+    min-width: 70px;
+  }
+  .shortcut {
+    display: inline-block;
+    padding: 1px 5px;
+    @include border-radius(2px);
+    color: #fff;
+    background-color: #333;
+  }
+}
