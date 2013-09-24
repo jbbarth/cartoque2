@@ -26,4 +26,18 @@
 $(function() {
   //hide alert messages after 6s
   $('#flash').delay(6000).fadeOut(300)
+
+  //actions that should be triggered on page load, see below
+  triggerOnLoadEvents()
 })
+
+//turbolink events
+$(document).on('page:change', function() {
+  triggerOnLoadEvents()
+})
+
+//events that should be triggered in full loads AND turbolinks loads
+function triggerOnLoadEvents() {
+  //focus on the first visible field of form
+  $('form').find('input:visible,textarea:visible,select:visible').first().focus()
+}
