@@ -39,10 +39,11 @@ $(function() {
       clickFirst(nextTab.find('a'))
     }
   })
-  //shortcuts help modal
+  //shortcuts help modal, triggered with '?'
   //doesn't work in keymaster so... see: https://github.com/madrobby/keymaster/issues/59
-  $(document).on('keyup',function(e) {
+  $(document).on('keyup', function(e) {
     var $target = $(e.target)
+    //key '191' is '?'
     if (e.keyCode == 191 && !$target.is("input") && !$target.is("textarea") && !$target.is("select")) {
       $.getScript("/help/keyboard")
     }
