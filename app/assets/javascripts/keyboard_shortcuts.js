@@ -1,20 +1,29 @@
 // Keyboard shortcuts
 $(function() {
+  //set a custom scope for inputs, so that we can
+  //bind some shortcuts even in inputs
+  key.filter = function(event){
+    var tagName = (event.target || event.srcElement).tagName;
+    key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? 'input' : 'other');
+    return true;
+  }
   //back to index when a show/edit window is open
-  key('esc', function(e) {
+  keyEsc = function(e) {
     if ($('.show').length) {
       clickFirst($('h1 a, ul.nav li.active a'))
     }
     if ($('.modal').length) {
       $('.modal').modal('hide')
     }
-  }) 
+  }
+  key('esc', 'input', keyEsc)
+  key('esc', 'other', keyEsc)
   //shortcuts for some links
-  key('n', function(e) {
+  key('n', 'other', function(e) {
     clickFirst($('#new'))
   })
   //navigate between tabs
-  key('right', function(e) {
+  key('right', 'other', function(e) {
     if ($('.nav-tabs li.active').length) {
       var selectedTab = $('.nav-tabs li.active')
       var nextTab = selectedTab.next('li')
@@ -22,7 +31,7 @@ $(function() {
       clickFirst(nextTab.find('a'))
     }
   })
-  key('left', function(e) {
+  key('left', 'other', function(e) {
     if ($('.nav-tabs li.active').length) {
       var selectedTab = $('.nav-tabs li.active')
       var nextTab = selectedTab.prev('li')
