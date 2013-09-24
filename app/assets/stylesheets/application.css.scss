@@ -233,11 +233,18 @@ html, body {
     color: #fff;
     background-color: #333;
   }
-  .shortcut-big {
-    //arrows and things like that are too small when
-    //rendered with the same styles as above
+  //arrows and things like that are too small when
+  //rendered with the same styles as above
+  .shortcut-big, .shortcut-large {
     font-size: 180%;
     font-weight: bold;
+  }
+  .shortcut-big {
     padding: 1px;
   }
+}
+
+//tables
+tr.selected td {
+  background-color: #ffa;
 }

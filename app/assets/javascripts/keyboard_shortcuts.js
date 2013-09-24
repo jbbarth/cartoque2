@@ -39,6 +39,32 @@ $(function() {
       clickFirst(nextTab.find('a'))
     }
   })
+  //up/down keys for selecting table lines
+  key('down', function(e) {
+    if ($('table > tbody').length) {
+      var table = $('table > tbody').first()
+      var selectedRow = table.find('tr.selected')
+      var nextRow = selectedRow.next('tr').first()
+      if (!nextRow.length) { nextRow = table.find('tr').first() }
+      selectedRow.removeClass('selected')
+      nextRow.addClass('selected')
+      $("body").scrollTop(nextRow.offset().top - $(window).height() / 2)
+      return false
+    }
+  })
+  key('up', function(e) {
+    if ($('table > tbody').length) {
+      var table = $('table > tbody').first()
+      var selectedRow = table.find('tr.selected')
+      var prevRow = selectedRow.prev('tr').first()
+      if (!prevRow.length) { prevRow = table.find('tr').last() }
+      selectedRow.removeClass('selected')
+      prevRow.addClass('selected')
+      $("body").scrollTop(prevRow.offset().top - $(window).height() / 2)
+      return false
+    }
+  })
+
   //shortcuts help modal, triggered with '?'
   //doesn't work in keymaster so... see: https://github.com/madrobby/keymaster/issues/59
   $(document).on('keyup', function(e) {
