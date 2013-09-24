@@ -228,8 +228,16 @@ html, body {
   .shortcut {
     display: inline-block;
     padding: 1px 5px;
+    margin: 0 2px;
     @include border-radius(2px);
     color: #fff;
     background-color: #333;
+  }
+  .shortcut-big {
+    //arrows and things like that are too small when
+    //rendered with the same styles as above
+    font-size: 180%;
+    font-weight: bold;
+    padding: 1px;
   }
 }
