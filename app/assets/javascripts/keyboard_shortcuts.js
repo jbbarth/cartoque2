@@ -33,6 +33,10 @@ $(function() {
   })
   //navigate between tabs
   key('right', 'other', function(e) {
+    if ($('.pagination').length) {
+      clickFirst($('.pagination .next_page'))
+      return false
+    }
     if ($('.nav-tabs li.active').length) {
       var selectedTab = $('.nav-tabs li.active')
       var nextTab = selectedTab.next('li')
@@ -41,6 +45,10 @@ $(function() {
     }
   })
   key('left', 'other', function(e) {
+    if ($('.pagination').length) {
+      clickFirst($('.pagination .previous_page'))
+      return false
+    }
     if ($('.nav-tabs li.active').length) {
       var selectedTab = $('.nav-tabs li.active')
       var nextTab = selectedTab.prev('li')
