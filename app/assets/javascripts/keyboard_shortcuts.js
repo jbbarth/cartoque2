@@ -22,6 +22,15 @@ $(function() {
   key('n', 'other', function(e) {
     clickFirst($('#new'))
   })
+  key('e', 'other', function(e) {
+    clickFirst($('#edit, .selected .action-buttons .edit'))
+  })
+  key('d', 'other', function(e) {
+    clickFirst($('#delete, .selected .action-buttons .delete'))
+  })
+  key('enter', 'other', function(e) {
+    clickFirst($('.selected a'))
+  })
   //navigate between tabs
   key('right', 'other', function(e) {
     if ($('.nav-tabs li.active').length) {

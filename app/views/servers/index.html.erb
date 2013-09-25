@@ -14,8 +14,8 @@
     <% @servers.each do |server| %>
       <tr>
         <td><%= link_to server.name, server %></td>
-        <td class=action-buttons><%= link_to 'Edit', edit_server_path(server) %></td>
-        <td class=action-buttons><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_server_path(server), class: 'edit' %></td>
+        <td class=action-buttons><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>

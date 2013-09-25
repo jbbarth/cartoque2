@@ -14,8 +14,8 @@
     <% @contacts.each do |contact| %>
       <tr>
         <td><%= link_to contact.name, contact %></td>
-        <td class=action-buttons><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td class=action-buttons><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_contact_path(contact), class: 'edit' %></td>
+        <td class=action-buttons><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>

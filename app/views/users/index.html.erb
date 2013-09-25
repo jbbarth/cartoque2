@@ -16,8 +16,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.email, user %></td>
-        <td class=action-buttons><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td class=action-buttons><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_user_path(user), class: 'edit' %></td>
+        <td class=action-buttons><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>

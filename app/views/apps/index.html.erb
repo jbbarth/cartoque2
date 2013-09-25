@@ -14,8 +14,8 @@
     <% @apps.each do |app| %>
       <tr>
         <td><%= link_to app.name, app %></td>
-        <td class=action-buttons><%= link_to 'Edit', edit_app_path(app) %></td>
-        <td class=action-buttons><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_app_path(app), class: 'edit' %></td>
+        <td class=action-buttons><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,7 @@
 
 <div class=show>
   <div class=pull-right>
-    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %>
+    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), id: 'edit' %>
   </div>
   <h2><%%= @<%= singular_table_name %>.<%= attributes.detect{|attr|attr.name=="name"} ? "name" : "to_s" %> %></h2>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
