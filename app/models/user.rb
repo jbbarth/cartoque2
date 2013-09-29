@@ -4,4 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable, :omniauthable
   devise :database_authenticatable, :trackable, :validatable,
          :token_authenticatable
+
+  # audit for changes
+  has_paper_trail
 end

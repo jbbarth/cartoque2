@@ -1,6 +1,9 @@
 class Location < ActiveRecord::Base
   has_ancestry
 
+  # audit for changes
+  has_paper_trail
+
   # see: https://github.com/stefankroes/ancestry/wiki/Creating-a-selectbox-for-a-form-using-ancestry
   def self.arrange_as_array(options={}, hash=nil)
     hash ||= arrange(options)
