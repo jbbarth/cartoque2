@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Location do
+  it { should be_versioned }
+
   it "can have ancestries" do
     datacenter = Location.create!(name: "Main DC")
     room       = Location.create!(name: "Room 1")
