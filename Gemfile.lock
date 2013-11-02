@@ -30,7 +30,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.12)
     bcrypt-ruby (3.1.1)
-    bootstrap-sass (2.3.2.0)
+    bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
@@ -204,7 +204,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry (~> 2.0.0)
-  bootstrap-sass (~> 2.3.2.0)
+  bootstrap-sass (~> 3.0.0.0)
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner

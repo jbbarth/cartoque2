@@ -18,10 +18,7 @@
  * Using @import as recommended in the README
  * because it allows to re-use bootstrap mixins.
 */
-$navbarBackground : #f0f0f0;
-$navbarBackgroundHighlight : lighten($navbarBackground, 2%);
-$navbarLinkColor : #444;
-$navbarLinkColorHover : #000;
+$navbar-bg: #490a3d;
 @import "bootstrap";
 
 /*
@@ -29,9 +26,14 @@ $navbarLinkColorHover : #000;
  */
 @import "font-awesome";
 
+/*
+ * Our mixins
+ */
+@import "mixins";
+
 /* general styling */
 h1 {
-  margin-top: 20px;
+  margin: 20px 0 10px 0;
   font-weight: normal;
   a {
     color: #666;
@@ -48,33 +50,35 @@ h2 {
 
 //flash messages
 #flash {
-  position:absolute; top: $navbarHeight + 5px; left:30%; width:40%; text-align:center; font-weight:bold; z-index:1500;
+  position:absolute; top: $navbar-height + 5px; left:30%; width:40%; text-align:center; font-weight:bold; z-index:1500;
   .flash-notice, .flash-error { padding:4px 6px; }
   .flash-notice { color: #195; }
   .flash-error, .flash-alert { color: #d21; }
 }
 
 //brand in navbar
-//TODO: test offsets on various platforms !
-//I set them to 0 for now as the rendering is fine on MacOSX but weird on Linux
-$navbarLinkVerticalOffset :  0px;
-$navbarBrandVerticalOffset : 0px;
-body > .navbar {
-  .nav a {
-    padding:(10px - $navbarLinkVerticalOffset) 10px (10px + $navbarLinkVerticalOffset) 15px;
-  }
-  .brand {
-    color: #444;
-    font-weight: bold;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
-    padding:(10px - $navbarBrandVerticalOffset) 20px (10px + $navbarBrandVerticalOffset) 20px;
+.main-navbar {
+  background-color: $navbar-bg;
+  @include gradient-vertical($navbar-bg, darken($navbar-bg, 4%));
+  @include box-shadow(0 0 4px darken($navbar-bg, 20%));
+  a, a:visited {
+    color: #eee;
+    text-shadow: none;
     transition: all .2s linear;
-    &:hover {
-      color: #000;
-      text-shadow: none;
-    }
+  }
+  .pull-right {
+    margin-right: -15px;
+  }
+  .navbar-brand {
+    font-weight: bold;
+  }
+  .nav > li > a:hover, .nav > li > a:focus, .navbar-brand:hover {
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 1em rgba(255, 255, 255, 0.5);
   }
 }
+
 //action buttons in tables
 th.action-buttons {
   width: 10%;
@@ -90,6 +94,9 @@ td.action-buttons {
 }
 .nav-settings {
   font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
 }
 #error_explanation {
   color: #f00;
@@ -154,31 +161,32 @@ html {
 
 // sticky footer
 // http://css-tricks.com/snippets/css/sticky-footer/
-$footerHeight : 30px;
+$footer-height : 30px;
 html, body {
   height: 100%;
 }
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -$footerHeight;
+  margin-bottom: -$footer-height;
   /* don't hide body under navbar */
   @include box-sizing(border-box);
-  padding-top: $navbarHeight + 10px;
+  padding-top: $navbar-height + 10px;
 }
 .page-wrap:after {
   content: "";
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: $footerHeight;
+  height: $footer-height;
 }
 // footer styles
 .site-footer {
-  font-size: 90%;
+  font-size: 85%;
   color: #999;
   text-align: center;
   .container {
     border-top: 1px solid #ddd;
+    padding: 4px;
   }
   a, a:visited {
     color: #888;
@@ -203,27 +211,32 @@ html, body {
 //show sections
 .show {
   padding: 12px 18px;
+  margin: 0 0 10px 0;
   height: 100%;
   min-height: 400px;
   border-color: #ccc;
   border-style: solid;
   border-width: 1px;
-  @include box-shadow(0 0 5px #bbb);
+  @include box-shadow(0 0 3px #bbb);
   @include box-sizing(border-box);
 }
 
 //help
 .help-modal {
-  width: 800px;
-  margin-left: -400px; //=width/2
+  h4 {
+    margin: 0;
+  }
+  .modal-dialog {
+    width: 800px;
+  }
 }
 .help-keyboard-shortcuts {
   td {
-    padding:4px 8px;
+    padding:4px;
   }
   tr td:first-child {
     text-align: right;
-    min-width: 70px;
+    min-width: 60px;
   }
   .shortcut {
     display: inline-block;
@@ -245,6 +258,9 @@ html, body {
 }
 
 //tables
+.table {
+  margin-top: 10px;
+}
 tr.selected td {
   background-color: #ffa;
 }

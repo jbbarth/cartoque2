@@ -1,24 +1,26 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<div class="main-navbar navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </a>
-      <%= link_to 'Cartoque', root_path, class: 'brand' %>
-      <div class="nav-collapse">
-        <% if signed_in? %>
-        <ul class="nav">
-          <li><%= link_to 'Applications', apps_path %></li>
-          <li><%= link_to 'Servers', servers_path %></li>
-          <li><%= link_to 'Contacts', contacts_path %></li>
-        </ul>
-        <ul class="nav pull-right">
-          <li><%= link_to content_tag(:i, '', class: 'icon-cog'), users_path %></li>
-        </ul>
-        <% end %>
-      </div>
+      </button>
+      <%= link_to 'Cartoque', root_path, class: 'navbar-brand' %>
+    </div>
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+      <% if signed_in? %>
+        <li><%= link_to 'Applications', apps_path %></li>
+        <li><%= link_to 'Servers', servers_path %></li>
+        <li><%= link_to 'Contacts', contacts_path %></li>
+      <% end %>
+      </ul>
+      <% if signed_in? %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to content_tag(:i, '', class: 'icon-cog'), users_path %></li>
+      </ul>
+      <% end %>
     </div>
   </div>
 </div>
