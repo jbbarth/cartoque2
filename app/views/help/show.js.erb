@@ -1,4 +1,4 @@
-$('.modal').remove()
+$('.modal, .modal-backdrop').remove()
 var $modal = $('<div class="modal fade help-modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"></div><div class="modal-body"></div></div></div></div>')
 $modal.find('.modal-body').html('<%= escape_javascript render params[:page] %>')
 $modal.find('h4').appendTo($modal.find('.modal-header'))
