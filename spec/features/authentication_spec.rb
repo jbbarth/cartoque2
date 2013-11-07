@@ -35,12 +35,15 @@ describe 'Authentication' do
         page.status_code.should == 401
       end
 
-      it 'refuses access if the given authentication token is wrong (blank, too short)' do
-        page.set_headers('HTTP_X_API_TOKEN' => 'blah')
+      it 'refuses access if the given authentication token is blank' do
+        page.set_headers('HTTP_X_API_TOKEN' => '')
         visit servers_path(format: 'json').to_s
         page.status_code.should == 401
+        JSON.parse(page.body).keys.should include 'message'
+      end
 
-        page.set_headers('HTTP_X_API_TOKEN' => '')
+      it 'refuses access if the given authentication token is too short' do
+        page.set_headers('HTTP_X_API_TOKEN' => 'blah')
         visit servers_path(format: 'json').to_s
         page.status_code.should == 401
       end

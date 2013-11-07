@@ -233,6 +233,21 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  config.warden do |manager|
+    manager.failure_app = Class.new(Devise::FailureApp) do
+      def http_auth_body_with_message_key
+        if request_format.to_s == "json"
+          # ... instead of { :error => "error message" }
+          # we want a 'message' key to have the same error
+          # key everywhere
+          { :message => i18n_message }.to_json
+        else
+          http_auth_body_without_message_key
+        end
+      end
+      alias_method_chain :http_auth_body, :message_key
+    end
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
