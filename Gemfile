@@ -39,7 +39,7 @@ gem 'roar-rails'
 gem 'devise', '~> 3.0.0'
 
 # Pagination
-gem 'will_paginate', '~> 3.0.4'
+gem 'will_paginate', '~> 3.0.5'
 
 # Trees
 gem 'ancestry', '~> 2.0.0'
