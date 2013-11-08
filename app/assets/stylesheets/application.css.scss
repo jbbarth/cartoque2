@@ -162,12 +162,13 @@ html {
 // sticky footer
 // http://css-tricks.com/snippets/css/sticky-footer/
 $footer-height : 30px;
+$footer-padding : 10px;
 html, body {
   height: 100%;
 }
 .page-wrap {
   min-height: 100%;
-  margin-bottom: -$footer-height;
+  margin-bottom: -$footer-height -$footer-padding;
   /* don't hide body under navbar */
   @include box-sizing(border-box);
   padding-top: $navbar-height + 10px;
@@ -177,16 +178,15 @@ html, body {
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: $footer-height;
+  height: $footer-height + 2 * $footer-padding;
 }
 // footer styles
 .site-footer {
-  font-size: 85%;
   color: #999;
   text-align: center;
   .container {
     border-top: 1px solid #ddd;
-    padding: 4px;
+    padding: $footer-padding 4px;
   }
   a, a:visited {
     color: #888;

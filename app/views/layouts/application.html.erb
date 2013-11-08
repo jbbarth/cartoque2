@@ -26,9 +26,17 @@
 <div class=site-footer>
   <% if signed_in? %>
   <div class=container>
-    <%= link_to "Cartoque v#{Cartoque::Application::VERSION}", "http://cartoque.org/" %>
-    -
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <div class=row>
+      <div class="col-md-4 text-left">
+        <%= link_to content_tag(:i, "", class: "fa fa-keyboard-o")+" Keyboard shortcuts", help_path(page: "keyboard"),
+                    remote: true  %>
+      </div>
+      <div class="col-md-4 text-center">
+        <%= link_to "Cartoque v#{Cartoque::Application::VERSION}", "http://cartoque.org/" %>
+      </div>
+      <div class="col-md-4 text-right">
+        <%= link_to content_tag(:i, "", class: "fa fa-sign-out")+" Log out", destroy_user_session_path, method: :delete %>
+      </div>
   </div>
   <% end %>
 </div>
