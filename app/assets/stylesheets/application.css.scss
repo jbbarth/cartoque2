@@ -262,5 +262,6 @@ html, body {
   margin-top: 10px;
 }
 tr.selected td {
-  background-color: #ffa;
+  //this "!important" ensure this style outweights other potential backgrounds especially on ":hover"
+  background-color: #ffa !important;
 }
