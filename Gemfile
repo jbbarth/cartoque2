@@ -64,11 +64,11 @@ gem 'pry', group: [ :development, :test ]
 
 # Testing stuff
 group :test do
-  gem 'rspec'                         # specs framework
-  gem 'rspec-rails'                   # rails integration for rspec
-  gem 'capybara'                      # integration tests
-  gem 'database_cleaner'              # clean db state during/after tests
-  gem 'factory_girl_rails', '~> 4.2'  # replacement for fixtures
-  gem 'spring'                        # faster tests!
-  gem 'guard-rspec'                   # automatically launch specs
+  gem 'rspec', '~> 2.13.0'                   # specs framework
+  gem 'rspec-rails', '~> 2.13.2'             # rails integration for rspec
+  gem 'capybara', '~> 2.1.0'                 # integration tests
+  gem 'database_cleaner', '~> 1.0.1'         # clean db state during/after tests
+  gem 'factory_girl_rails', '~> 4.2'         # replacement for fixtures
+  gem 'spring', '~> 0.0.10'                  # faster tests!
+  gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
 end

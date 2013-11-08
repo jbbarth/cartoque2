@@ -204,23 +204,23 @@ PLATFORMS
 DEPENDENCIES
   ancestry (~> 2.0.0)
   bootstrap-sass (~> 3.0.2.0)
-  capybara
+  capybara (~> 2.1.0)
   coffee-rails (~> 4.0.1)
-  database_cleaner
+  database_cleaner (~> 1.0.1)
   devise (~> 3.0.0)
   factory_girl_rails (~> 4.2)
   font-awesome-rails (~> 4.0.3.0)
-  guard-rspec
+  guard-rspec (~> 3.0.2)
   jquery-rails
   pg (~> 0.17.0)
   pry
   rails (= 4.0.1)
   roar-rails (~> 0.1.4)
-  rspec
-  rspec-rails
+  rspec (~> 2.13.0)
+  rspec-rails (~> 2.13.2)
   sass-rails (~> 4.0.1)
   sdoc
-  spring
+  spring (~> 0.0.10)
   therubyracer (~> 0.12.0)
   turbolinks
   uglifier (~> 2.3.0)
