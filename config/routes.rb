@@ -19,7 +19,7 @@ Cartoque::Application.routes.draw do
   resources :servers
   resources :users
   resources :locations
-  get "help/:page", to: "help#show"
+  get "help/:page", to: "help#show", as: "help"
   get "welcome/index"
 
   # Default root
