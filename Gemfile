@@ -12,7 +12,7 @@ gem 'bootstrap-sass', '~> 3.0.0.0'
 gem 'font-awesome-rails', '~> 4.0.3.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 2.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.1'
