@@ -33,7 +33,7 @@ gem 'turbolinks'
 # gem 'jbuilder', '~> 1.2' # => removed in favor of roar
 
 # Resource-Oriented Architectures in Ruby
-gem 'roar-rails'
+gem 'roar-rails', '~> 0.1.4'
 
 # Authentication
 gem 'devise', '~> 3.0.0'
