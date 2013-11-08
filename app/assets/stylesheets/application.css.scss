@@ -21,6 +21,33 @@
 $navbar-bg: #490a3d;
 @import "bootstrap";
 
+// Custom fonts
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(./OpenSans-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(./OpenSans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(./OpenSans-Semibold.woff) format('woff');
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
 /*
  * Include font-awesome iconic webfont
  */
@@ -34,7 +61,6 @@ $navbar-bg: #490a3d;
 /* general styling */
 h1 {
   margin: 20px 0 10px 0;
-  font-weight: normal;
   a {
     color: #666;
     display: block;
@@ -184,6 +210,8 @@ html, body {
 .site-footer {
   color: #999;
   text-align: center;
+  font-weight: 300;
+  font-size: 90%;
   .container {
     border-top: 1px solid #ddd;
     padding: $footer-padding 4px;
@@ -193,6 +221,10 @@ html, body {
   }
   a:hover {
     color: #005580;
+  }
+  //ensure font-awesome icons display in proper size, 13px doesn't render well
+  .fa {
+    font-size:14px;
   }
 }
 
