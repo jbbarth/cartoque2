@@ -44,9 +44,6 @@ gem 'will_paginate', '~> 3.0.5'
 # Trees
 gem 'ancestry', '~> 2.0.0'
 
-# Audit AR models
-gem 'paper_trail', '~> 3.0.0.rc1'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -75,3 +72,9 @@ group :test do
   gem 'spring', '~> 0.0.10'                  # faster tests!
   gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
 end
+
+# Audit AR models
+# NB: this line should stay *after* rspec/rspec-rails so
+# that paper_trail rspec integration fires after rspec is
+# loaded.
+gem 'paper_trail', '~> 3.0.0.rc1'
