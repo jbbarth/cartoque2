@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
          :token_authenticatable
 
   # audit for changes
-  has_paper_trail
+  # ignore attributes that are updated on each request by devise..
+  has_paper_trail ignore: %i(last_sign_in_at current_sign_in_at sign_in_count updated_at)
 end
