@@ -1,6 +1,7 @@
 module API::ServersRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
+  include PaginationRepresenter
 
   collection :servers, class: Server,
                        extend: API::ServerRepresenter,
@@ -14,8 +15,9 @@ module API::ServersRepresenter
     collect
   end
 
-  link :self do
-    api_servers_path
+  # Generates url in PaginationRepresenter
+  def page_url(*args)
+    api_servers_path(*args)
   end
 
   link :create do

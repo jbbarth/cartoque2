@@ -1,7 +1,7 @@
 class API::<%= class_name %>sController < API::ApplicationController
   # GET /api/<%= plural_name %>
   def index
-    respond_with <%= class_name %>.all
+    respond_with <%= class_name %>.page(params[:page]).per_page(items_per_page)
   end
 
   # GET /api/<%= plural_name %>/1

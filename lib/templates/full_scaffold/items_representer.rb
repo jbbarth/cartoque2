@@ -1,6 +1,7 @@
 module API::<%= class_name.pluralize %>Representer
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
+  include PaginationRepresenter
 
   collection :<%= plural_name %>, class: <%= class_name %>,
                        extend: API::<%= class_name %>Representer,
@@ -14,8 +15,9 @@ module API::<%= class_name.pluralize %>Representer
     collect
   end
 
-  link :self do
-    api_<%= plural_name %>_path
+  # Generates url in PaginationRepresenter
+  def page_url(*args)
+    api_<%= plural_name %>_path(*args)
   end
 
   link :create do

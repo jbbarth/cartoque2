@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe API::<%= class_name.pluralize %>Representer do
   let(:<%= plural_name %>) do
     <%= plural_name %> = []
     <%= plural_name %> << create(:<%= singular_name %>, name: "srv-01")
     <%= plural_name %> << create(:<%= singular_name %>, name: "srv-02")
-    <%= plural_name %>.extend(API::<%= class_name.pluralize %>Representer)
+    <%= plural_name %>.paginate.extend(API::<%= class_name.pluralize %>Representer)
   end
   let(:<%= plural_name %>_json) { JSON.parse(<%= plural_name %>.to_json) }
 
@@ -20,7 +21,7 @@ describe API::<%= class_name.pluralize %>Representer do
     end
 
     it "exposes a link to API <%= plural_name %> index" do
-      expect(<%= plural_name %>_json["_links"]["self"]["href"]).to eq "/api/<%= plural_name %>"
+      expect(<%= plural_name %>_json["_links"]["self"]["href"]).to eq "/api/<%= plural_name %>?page=1"
     end
 
     it "exposes a link to create action" do

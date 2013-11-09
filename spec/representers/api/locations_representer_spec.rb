@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe API::LocationsRepresenter do
   let(:locations) do
     locations = []
     locations << create(:location, name: "srv-01")
     locations << create(:location, name: "srv-02")
-    locations.extend(API::LocationsRepresenter)
+    locations.paginate.extend(API::LocationsRepresenter)
   end
   let(:locations_json) { JSON.parse(locations.to_json) }
 
@@ -20,7 +21,7 @@ describe API::LocationsRepresenter do
     end
 
     it "exposes a link to API locations index" do
-      expect(locations_json["_links"]["self"]["href"]).to eq "/api/locations"
+      expect(locations_json["_links"]["self"]["href"]).to eq "/api/locations?page=1"
     end
 
     it "exposes a link to create action" do

@@ -1,7 +1,7 @@
 class API::ContactsController < API::ApplicationController
   # GET /api/contacts
   def index
-    respond_with Contact.all
+    respond_with Contact.page(params[:page]).per_page(items_per_page)
   end
 
   # GET /api/contacts/1

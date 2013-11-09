@@ -1,6 +1,7 @@
 module API::LocationsRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
+  include PaginationRepresenter
 
   collection :locations, class: Location,
                        extend: API::LocationRepresenter,
@@ -14,8 +15,9 @@ module API::LocationsRepresenter
     collect
   end
 
-  link :self do
-    api_locations_path
+  # Generates url in PaginationRepresenter
+  def page_url(*args)
+    api_locations_path(*args)
   end
 
   link :create do

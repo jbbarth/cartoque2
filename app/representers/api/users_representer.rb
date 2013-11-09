@@ -1,6 +1,7 @@
 module API::UsersRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
+  include PaginationRepresenter
 
   collection :users, class: User,
                        extend: API::UserRepresenter,
@@ -14,8 +15,9 @@ module API::UsersRepresenter
     collect
   end
 
-  link :self do
-    api_users_path
+  # Generates url in PaginationRepresenter
+  def page_url(*args)
+    api_users_path(*args)
   end
 
   link :create do

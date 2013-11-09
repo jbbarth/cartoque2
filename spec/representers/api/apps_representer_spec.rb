@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe API::AppsRepresenter do
   let(:apps) do
     apps = []
     apps << create(:app, name: "app-01")
     apps << create(:app, name: "app-02")
-    apps.extend(API::AppsRepresenter)
+    apps.paginate.extend(API::AppsRepresenter)
   end
   let(:apps_json) { JSON.parse(apps.to_json) }
 
@@ -20,7 +21,7 @@ describe API::AppsRepresenter do
     end
 
     it "exposes a link to API apps index" do
-      expect(apps_json["_links"]["self"]["href"]).to eq "/api/apps"
+      expect(apps_json["_links"]["self"]["href"]).to eq "/api/apps?page=1"
     end
 
     it "exposes a link to create action" do

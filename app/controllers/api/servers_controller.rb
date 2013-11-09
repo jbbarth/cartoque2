@@ -1,7 +1,7 @@
 class API::ServersController < API::ApplicationController
   # GET /api/servers
   def index
-    respond_with Server.all
+    respond_with Server.page(params[:page]).per_page(items_per_page)
   end
 
   # GET /api/servers/1

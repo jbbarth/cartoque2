@@ -7,6 +7,12 @@ class API::ApplicationController < ::ApplicationController
   # API controllers should respond only to json requests
   respond_to :json
 
+  # Most index requests are paginated, this gives the default number of results
+  # included in each page
+  def items_per_page
+    50
+  end
+
   # Sets format to 'json' if it's blank in the request
   # The filter is *prepended* so that it's triggered before other filters, which
   # can then rely on the format easily (see CSRF protection below for instance)

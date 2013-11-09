@@ -1,7 +1,7 @@
 class API::UsersController < API::ApplicationController
   # GET /api/users
   def index
-    respond_with User.all
+    respond_with User.page(params[:page]).per_page(items_per_page)
   end
 
   # GET /api/users/1

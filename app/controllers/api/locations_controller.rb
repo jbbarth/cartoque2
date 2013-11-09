@@ -1,7 +1,7 @@
 class API::LocationsController < API::ApplicationController
   # GET /api/locations
   def index
-    respond_with Location.all
+    respond_with Location.page(params[:page]).per_page(items_per_page)
   end
 
   # GET /api/locations/1

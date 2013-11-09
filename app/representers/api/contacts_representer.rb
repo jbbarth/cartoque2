@@ -1,6 +1,7 @@
 module API::ContactsRepresenter
   include Roar::Representer::JSON::HAL
   include Roar::Representer::Feature::Hypermedia
+  include PaginationRepresenter
 
   collection :contacts, class: Contact,
                        extend: API::ContactRepresenter,
@@ -14,8 +15,9 @@ module API::ContactsRepresenter
     collect
   end
 
-  link :self do
-    api_contacts_path
+  # Generates url in PaginationRepresenter
+  def page_url(*args)
+    api_contacts_path(*args)
   end
 
   link :create do

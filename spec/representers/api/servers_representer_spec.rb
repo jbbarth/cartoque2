@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe API::ServersRepresenter do
   let(:servers) do
     servers = []
     servers << create(:server, name: "srv-01")
     servers << create(:server, name: "srv-02")
-    servers.extend(API::ServersRepresenter)
+    servers.paginate.extend(API::ServersRepresenter)
   end
   let(:servers_json) { JSON.parse(servers.to_json) }
 
@@ -20,7 +21,7 @@ describe API::ServersRepresenter do
     end
 
     it "exposes a link to API servers index" do
-      expect(servers_json["_links"]["self"]["href"]).to eq "/api/servers"
+      expect(servers_json["_links"]["self"]["href"]).to eq "/api/servers?page=1"
     end
 
     it "exposes a link to create action" do

@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe API::UsersRepresenter do
   let(:users) do
     users = []
     users << create(:user, email: "user-01@example.net")
     users << create(:user, email: "user-02@example.net")
-    users.extend(API::UsersRepresenter)
+    users.paginate.extend(API::UsersRepresenter)
   end
   let(:users_json) { JSON.parse(users.to_json) }
 
@@ -20,7 +21,7 @@ describe API::UsersRepresenter do
     end
 
     it "exposes a link to API users index" do
-      expect(users_json["_links"]["self"]["href"]).to eq "/api/users"
+      expect(users_json["_links"]["self"]["href"]).to eq "/api/users?page=1"
     end
 
     it "exposes a link to create action" do
