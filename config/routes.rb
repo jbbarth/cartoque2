@@ -9,6 +9,7 @@ Cartoque::Application.routes.draw do
     resources :servers
     resources :users
     resources :locations
+    get "history", to: "history#index", as: "history"
     #hook for generators
     root 'root#index'
   end

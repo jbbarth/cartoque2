@@ -5,6 +5,8 @@ class API::RootController < API::ApplicationController
       _links: {
         #self url
         self:     { href: api_root_path },
+        #history stream for resources
+        history:  { href: api_history_path },
         #resources
         apps:     { href: api_apps_path },
         contacts: { href: api_contacts_path },
