@@ -1,13 +1,11 @@
 require 'spec_helper'
 require 'will_paginate/array'
 
-describe API::HistoryRepresenter do
+describe API::HistoryRepresenter, versioning: true do
   let(:server) do
-    PaperTrail.enabled = true
     server = Server.create!(name: "server-01")
     server.update_attribute(:name, "server-001")
     server.update_attribute(:name, "server-001-primary")
-    PaperTrail.enabled = false
     server
   end
   let(:versions) { server.versions.paginate(page: 1, per_page: 2) }
