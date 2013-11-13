@@ -77,4 +77,8 @@ end
 # NB: this line should stay *after* rspec/rspec-rails so
 # that paper_trail rspec integration fires after rspec is
 # loaded.
-gem 'paper_trail', '~> 3.0.0.rc1'
+#
+# NB: we stick to beta1 because rc1 has a state leak bug: https://github.com/airblade/paper_trail/issues/293
+# when upgrading to next version, test that first:
+#   bundle exec rspec --order random:22727 --format doc spec/representers/api/history_representer_spec.rb spec/controllers/api/locations_controller_spec.rb 
+gem 'paper_trail', '~> 3.0.0.beta1'
