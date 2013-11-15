@@ -136,6 +136,10 @@ td.action-buttons {
     margin:0 0 30px 20px;
   }
 }
+.field_with_errors {
+  display: inline-block;
+  color: #f00;
+}
 // force vertical scrollbar in any case to avoid centering jumps
 // http://css-tricks.com/snippets/css/force-vertical-scrollbar/
 html {
