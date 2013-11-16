@@ -209,7 +209,7 @@ html, body {
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: $footer-height + 2 * $footer-padding;
+  height: $footer-height + $footer-padding;
 }
 // footer styles
 .site-footer {
