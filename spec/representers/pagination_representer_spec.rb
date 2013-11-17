@@ -51,6 +51,6 @@ describe PaginationRepresenter do
     ary = [*1..100].paginate.extend(PaginationRepresenter)
     expect do
       ary.to_json
-    end.to raise_error RuntimeError, "Implement me!"
+    end.to raise_error NotImplementedError, "Implement me!"
   end
 end

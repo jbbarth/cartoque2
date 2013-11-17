@@ -21,6 +21,6 @@ module PaginationRepresenter
   end
 
   def page_url(*)
-    raise "Implement me!"
+    raise NotImplementedError, "Implement me!"
   end
 end
