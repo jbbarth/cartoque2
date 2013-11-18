@@ -108,6 +108,8 @@ describe UsersController do
     end
 
     describe "with invalid params" do
+      render_views
+
       it "assigns the user as @user" do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
@@ -122,6 +124,13 @@ describe UsersController do
         User.any_instance.stub(:save).and_return(false)
         put :update, {id: user.to_param, user: { "email" => "invalid value" }}, valid_session
         response.should render_template("edit")
+      end
+
+      it "needs password confirmation" do
+        user = User.create! valid_attributes
+        passwd_params = { password: "blablabla", password_confirmation: "blehblehbleh" }
+        put :update, {id: user.to_param, user: passwd_params}, valid_session
+        response.body.should match /Password confirmation doesn.*t match/
       end
     end
   end
