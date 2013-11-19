@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 
   def seen_on
     time = [self.last_sign_in_at, self.current_sign_in_at].compact.max
-    time.nil? ? nil : time.to_date
+    time.nil? ? "" : time.to_date
   end
 end

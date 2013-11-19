@@ -22,7 +22,7 @@ describe User do
     it "doesn't break on empty dates" do
       user = User.new(last_sign_in_at: nil,
                       current_sign_in_at: nil)
-      user.seen_on.should == nil
+      user.seen_on.should == ""
     end
   end
 end

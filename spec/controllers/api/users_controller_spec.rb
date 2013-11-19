@@ -40,6 +40,13 @@ describe API::UsersController do
       json = JSON.parse(response.body)
       expect(json.keys).to include "_links"
     end
+
+    it "has a blank 'seen_on' attribute when user never logged in" do
+      user = User.create! valid_attributes
+      get :show, {id: user.to_param}, valid_session
+      json = JSON.parse(response.body)
+      expect(json["seen_on"]).to eq ""
+    end
   end
 
   describe "POST create" do
