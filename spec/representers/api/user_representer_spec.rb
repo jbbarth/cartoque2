@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe API::UserRepresenter do
-  let(:user) { create(:user, email: "user-#{Random.rand(1e4)}@example.net").extend(API::UserRepresenter) }
+  let(:user) {
+    create(:user, email: "user-#{Random.rand(1e4)}@example.net",
+                  last_sign_in_at: DateTime.parse("30/04/2013 10:00")
+
+          ).extend(API::UserRepresenter)
+  }
   let(:user_json) { JSON.parse(user.to_json) }
   let(:new_user) { User.new.extend(API::UserRepresenter) }
 
@@ -16,6 +21,10 @@ describe API::UserRepresenter do
 
     it 'should expose a link to self' do
       expect(user_json['_links']['self']['href']).to match %r{^/api/users/\d+$}
+    end
+
+    it "should expose last seen on date" do
+      expect(user_json["seen_on"]).to eq "2013-04-30"
     end
   end
 

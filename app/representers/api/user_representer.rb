@@ -4,6 +4,7 @@ module API::UserRepresenter
 
   property :id
   property :email
+  property :seen_on
   property :created_at, writeable: false
   property :updated_at, writeable: false
 

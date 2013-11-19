@@ -7,6 +7,7 @@
     <tr>
       <th>Email</th>
       <th class=text-center>API</th>
+      <th class=text-center>Seen on</th>
       <th colspan=2 class=action-buttons>
         <%= link_to 'New User', new_user_path, id: 'new' %>
       </th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= link_to user.email, user %></td>
         <td class="api text-center"><%= content_tag(:i, "", class: "fa fa-circle") if user.authentication_token? %></td>
+        <td class=text-center><%= user.seen_on %></td>
         <td class=action-buttons><%= link_to 'Edit', edit_user_path(user), class: 'edit' %></td>
         <td class=action-buttons><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
       </tr>
