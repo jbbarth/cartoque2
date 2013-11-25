@@ -9,6 +9,11 @@ class API::UsersController < API::ApplicationController
     respond_with User.find(params[:id])
   end
 
+  # GET /api/users/random_token
+  def random_token
+    render :json => { "token" => SecureRandom.hex(16) }.to_json
+  end
+
   # POST /api/users
   def create
     user = User.new(user_params)

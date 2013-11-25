@@ -14,6 +14,10 @@ describe API::UsersController do
       get("/api/users/1").should route_to("api/users#show", id: "1", format: "json")
     end
 
+    it "routes to #random_token" do
+      get("/api/users/random_token").should route_to("api/users#random_token", format: "json")
+    end
+
     it "routes to #edit" do
       get("/api/users/1/edit").should route_to("api/users#edit", id: "1", format: "json")
     end

@@ -49,6 +49,14 @@ describe API::UsersController do
     end
   end
 
+  describe "GET random_token" do
+    it "returns a random token" do
+      get :random_token, {}, valid_session
+      json = JSON.parse(response.body)
+      expect(json["token"].length).to eq 32
+    end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "creates a new User" do

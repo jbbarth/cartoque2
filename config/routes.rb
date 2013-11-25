@@ -7,7 +7,9 @@ Cartoque::Application.routes.draw do
     resources :contacts
     resources :apps
     resources :servers
-    resources :users
+    resources :users do
+      collection { get :random_token, as: :random_token }
+    end
     resources :locations
     get "history", to: "history#index", as: "history"
     #hook for generators
