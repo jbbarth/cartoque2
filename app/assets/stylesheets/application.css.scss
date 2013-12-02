@@ -237,6 +237,7 @@ html, body {
   margin-bottom: 10px;
   label {
     display: inline-block;
+    font-weight: normal;
     width: 80px;
   }
   input {
@@ -246,14 +247,13 @@ html, body {
 
 //show sections
 .show {
-  padding: 12px 18px;
+  padding: 16px 24px;
   margin: 10px 0;
   height: 100%;
   min-height: 400px;
-  border-color: #ccc;
+  border-color: #ddd;
   border-style: solid;
   border-width: 1px;
-  @include box-shadow(0 0 3px #ddd);
   @include box-sizing(border-box);
 }
 
