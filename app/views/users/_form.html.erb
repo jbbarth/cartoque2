@@ -23,6 +23,13 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label :authentication_token %>
+    <span id="authentication_token"><%= @user.authentication_token %></span>
+    <%= f.hidden_field :authentication_token %>
+    <%= button_tag "Generate", id: "generate-token", style: (@user.authentication_token.present? ? "display:none;" : nil), data: { url: random_token_api_users_path } %>
+    <%= button_tag "Delete", id: "remove-token", style: (@user.authentication_token.blank? ? "display:none;" : nil) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

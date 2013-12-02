@@ -238,7 +238,7 @@ html, body {
   label {
     display: inline-block;
     font-weight: normal;
-    width: 80px;
+    min-width: 120px;
   }
   input {
     margin-top: 10px;
