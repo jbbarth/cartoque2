@@ -14,6 +14,8 @@ Cartoque::Application.routes.draw do
     get "history", to: "history#index", as: "history"
     #hook for generators
     root 'root#index'
+    #catch-all route to avoid ActionController#RoutingError's
+    match '*a', to: 'application#render_404', via: :all
   end
 
   # Webapp

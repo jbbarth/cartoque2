@@ -85,5 +85,12 @@ describe API::ApplicationController do
       json = JSON.parse(response.body)
       expect(json["message"]).to eq "Hey"
     end
+
+    it "renders 404 correctly" do
+      API::DummyController.class_eval { def index; render_404; end }
+      get :index
+      expect(response.code).to eq "404"
+      expect(JSON.parse(response.body).keys).to include "message"
+    end
   end
 end
