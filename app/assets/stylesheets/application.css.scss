@@ -218,7 +218,8 @@ html, body {
   font-size: 85%;
   .container {
     border-top: 1px solid #ccc;
-    padding: $footer-padding 4px;
+    outline: 10px solid #fff;
+    padding: $footer-padding 15px;
   }
   a, a:visited {
     color: #777;
