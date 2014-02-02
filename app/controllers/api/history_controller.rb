@@ -1,6 +1,9 @@
 class API::HistoryController < API::ApplicationController
   rescue_from NameError do
-    render json: { message: "Resource type not found" }, status: :not_found
+    message = "Resource type not found."
+    message << " Missing 'item_type' parameter." if params[:item_type].blank?
+    message << " Missing 'item_id' parameter." if params[:item_id].blank?
+    render json: { message: message }, status: :not_found
   end
 
   def index
