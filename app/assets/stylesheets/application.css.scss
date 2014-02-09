@@ -20,6 +20,7 @@
 */
 $navbar-bg: #5f0d50;
 $link-hover-color: #e97F02;
+$input-border-focus: #ccc;
 @import "bootstrap";
 
 // Custom fonts
@@ -69,10 +70,39 @@ h1 {
 }
 h2 {
   font-weight:normal;
-  margin:0 0 12px;
+  margin:0 0 24px;
 }
 a:hover {
   text-decoration: none;
+}
+
+//buttons (see mixins & https://gist.github.com/claviska/6117193)
+.btn {
+  padding: 5px 10px;
+}
+.btn:focus {
+  outline: 0;
+}
+.btn-default {
+  @include pretty-buttons($btn-default-color, $btn-default-bg);
+}
+.btn-primary {
+  @include pretty-buttons($btn-primary-color, $btn-primary-bg);
+}
+.btn-success {
+  @include pretty-buttons($btn-success-color, $btn-success-bg);
+}
+.btn-info {
+  @include pretty-buttons($btn-info-color, $btn-info-bg);
+}
+.btn-warning {
+  @include pretty-buttons($btn-warning-color, $btn-warning-bg);
+}
+.btn-danger {
+  @include pretty-buttons($btn-danger-color, $btn-danger-bg);
+}
+.btn-inverse {
+  @include pretty-buttons(white, #474949);
 }
 
 //flash messages
@@ -230,19 +260,6 @@ html, body {
   //ensure font-awesome icons display in proper size, 13px doesn't render well
   .fa {
     font-size:14px;
-  }
-}
-
-// forms
-.field {
-  margin-bottom: 10px;
-  label {
-    display: inline-block;
-    font-weight: normal;
-    min-width: 120px;
-  }
-  input {
-    margin-top: 10px;
   }
 }
 

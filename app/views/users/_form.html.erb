@@ -1,8 +1,8 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { class: "form-horizontal" }) do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,26 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email, autocomplete: "off" %>
+  <div class=form-group>
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class=col-sm-4>
+      <%= f.text_field :email, class: "form-control", autocomplete: "off" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class=form-group>
+    <%= f.label :password, class: "col-sm-2 control-label" %>
+    <div class=col-sm-4>
+      <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class=form-group>
+    <%= f.label :password_confirmation, "Confirm password", class: "col-sm-2 control-label" %>
+    <div class=col-sm-4>
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :authentication_token %>
-    <span id="authentication_token"><%= @user.authentication_token %></span>
-    <%= f.hidden_field :authentication_token %>
-    <%= button_tag "Generate", id: "generate-token", style: (@user.authentication_token.present? ? "display:none;" : nil), data: { url: random_token_api_users_path } %>
-    <%= button_tag "Delete", id: "remove-token", style: (@user.authentication_token.blank? ? "display:none;" : nil) %>
+  <div class=form-group>
+    <%= f.label :authentication_token, class: "col-sm-2 control-label" %>
+    <div class=col-sm-6>
+      <p id="authentication_token" class="form-control-static" style="display:inline-block;"><%= @user.authentication_token %></p>
+      <%= f.hidden_field :authentication_token %>
+      <%= button_tag "Generate", id: "generate-token", class: "btn btn-xs btn-primary", style: "margin-left:-3px; " + (@user.authentication_token.present? ? "display:none;" : ""), data: { url: random_token_api_users_path } %>
+      <%= button_tag "Delete", id: "remove-token", class: "btn btn-xs btn-danger", style: "margin-left:10px; " + (@user.authentication_token.blank? ? "display:none;" : "") %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class=form-group>
+    <div class="col-sm-offset-2 col-sm-6">
+      <%= f.button type: "submit", class: "btn btn-default" %>
+    </div>
   </div>
+
 <% end %>
