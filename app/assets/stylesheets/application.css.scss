@@ -21,6 +21,8 @@
 $navbar-bg: #5f0d50;
 $link-hover-color: #e97F02;
 $input-border-focus: #ccc;
+$background-color: #fff;
+$nav-tabs-active-link-hover-bg: $background-color;
 @import "bootstrap";
 
 // Custom fonts
@@ -44,6 +46,7 @@ $input-border-focus: #ccc;
 }
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: $background-color;
 }
 h1, h2, h3, h4 {
   font-family: 'Open Sans', sans-serif;
@@ -177,7 +180,6 @@ html {
 }
 // pagination
 .pagination {
-  background: #fff;
   cursor: default;
   height: 22px;
   margin: 5px 0 20px;
@@ -248,7 +250,7 @@ html, body {
   font-size: 85%;
   .container {
     border-top: 1px solid #ccc;
-    outline: 10px solid #fff;
+    outline: 10px solid transparent;
     padding: $footer-padding 15px;
   }
   a, a:visited {
@@ -265,7 +267,7 @@ html, body {
 
 //show sections
 .show {
-  $show-color: #f8f8f8;
+  $show-color: #ececec;
   padding: 16px 24px;
   margin: 10px 0;
   height: 100%;
