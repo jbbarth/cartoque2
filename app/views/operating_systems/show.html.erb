@@ -1,0 +1,22 @@
+<h1><%= link_to "Operating systems", operating_systems_path %></h1>
+
+<%= render 'layouts/navbar_settings', active: "operating systems" %>
+
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Edit', edit_operating_system_path(@operating_system), id: 'edit' %>
+  </div>
+  <h2><%= @operating_system.name %></h2>
+  <p>
+    <strong>Name:</strong>
+    <%= @operating_system.name %>
+  </p>
+  <p>
+    <strong>Codename:</strong>
+    <%= @operating_system.codename %>
+  </p>
+  <p>
+    <strong>Supported until:</strong>
+    <%= @operating_system.supported_until %>
+  </p>
+</div>

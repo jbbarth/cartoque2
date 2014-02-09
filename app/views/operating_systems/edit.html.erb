@@ -1,0 +1,11 @@
+<h1><%= link_to "Operating systems", operating_systems_path %></h1>
+
+<%= render 'layouts/navbar_settings', active: "operating systems" %>
+
+<div class=show>
+  <div class=pull-right>
+    <%= link_to 'Show', @operating_system %>
+  </div>
+  <h2><%= @operating_system.name %></h2>
+  <%= render 'form' %>
+</div>

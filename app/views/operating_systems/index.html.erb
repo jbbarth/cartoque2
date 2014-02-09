@@ -1,0 +1,28 @@
+<h1>Operating systems</h1>
+
+<%= render 'layouts/navbar_settings', active: "operating systems" %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Codename</th>
+      <th class=text-center>Supported until</th>
+      <th colspan=2 class=action-buttons>
+        <%= link_to 'New Operating system', new_operating_system_path, id: 'new' %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operating_systems.each do |operating_system| %>
+      <tr>
+        <td><%= raw "&nbsp;" * operating_system.depth * 5 %><%= link_to operating_system.name, operating_system %></td>
+        <td><%= operating_system.codename %></td>
+        <td class=text-center><%= operating_system.supported_until %></td>
+        <td class=action-buttons><%= link_to 'Edit', edit_operating_system_path(operating_system), class: 'edit' %></td>
+        <td class=action-buttons><%= link_to 'Destroy', operating_system, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

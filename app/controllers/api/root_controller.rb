@@ -13,6 +13,7 @@ class API::RootController < API::ApplicationController
         servers:  { href: api_servers_path },
         users:    { href: api_users_path },
         locations: { href: api_locations_path },
+        operating_systems: { href: api_operating_systems_path },
         #hook for generators
       }
     }

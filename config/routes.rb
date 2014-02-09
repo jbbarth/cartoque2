@@ -11,6 +11,7 @@ Cartoque::Application.routes.draw do
       collection { get :random_token, as: :random_token }
     end
     resources :locations
+    resources :operating_systems
     get "history", to: "history#index", as: "history"
     #hook for generators
     root 'root#index'
@@ -24,6 +25,7 @@ Cartoque::Application.routes.draw do
   resources :servers
   resources :users
   resources :locations
+  resources :operating_systems
   get "help/:page", to: "help#show", as: "help"
   get "welcome/index"
 
