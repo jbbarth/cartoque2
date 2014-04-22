@@ -6,7 +6,7 @@ describe HelpController do
 
   describe "#show" do
     it "renders using the requested page through show.js.erb" do
-      get :show, page: "keyboard", format: :js
+      xhr :get, :show, page: "keyboard", format: :js
       response.should render_template("show")
     end
   end

@@ -47,8 +47,10 @@ describe API::ApplicationController do
     expect(hash["exception"]["message"]).to match /nonexistent/
   end
 
+  # TODO: this was previously run with "render: :nothing" but it stopped
+  # working between rails 4.0.1 and 4.1.0. See if it is normal or not...
   it "sets the format to JSON if none" do
-    API::DummyController.class_eval { def index; render nothing: true; end }
+    API::DummyController.class_eval { def index; render json: {}; end }
     get :index
     expect(response.headers["Content-Type"]).to match /application\/json/
   end

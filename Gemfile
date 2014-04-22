@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.17.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.0.2'
 gem 'font-awesome-rails', '~> 4.0.3.0'
 
@@ -64,12 +64,11 @@ gem 'pry', group: [ :development, :test ]
 
 # Testing stuff
 group :test do
-  gem 'rspec', '~> 2.13.0'                   # specs framework
-  gem 'rspec-rails', '~> 2.13.2'             # rails integration for rspec
+  gem 'rspec', '~> 2.14.1'                   # specs framework
+  gem 'rspec-rails', '~> 2.14.2'             # rails integration for rspec
   gem 'capybara', '~> 2.1.0'                 # integration tests
   gem 'database_cleaner', '~> 1.0.1'         # clean db state during/after tests
   gem 'factory_girl_rails', '~> 4.2'         # replacement for fixtures
-  gem 'spring', '~> 0.0.10'                  # faster tests!
   gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
 end
 
