@@ -66,9 +66,9 @@ gem 'pry', group: [ :development, :test ]
 group :test do
   gem 'rspec', '~> 2.14.1'                   # specs framework
   gem 'rspec-rails', '~> 2.14.2'             # rails integration for rspec
-  gem 'capybara', '~> 2.1.0'                 # integration tests
-  gem 'database_cleaner', '~> 1.0.1'         # clean db state during/after tests
-  gem 'factory_girl_rails', '~> 4.2'         # replacement for fixtures
+  gem 'capybara', '~> 2.2.1'                 # integration tests
+  gem 'database_cleaner', '~> 1.2.0'         # clean db state during/after tests
+  gem 'factory_girl_rails', '~> 4.4.1'       # replacement for fixtures
   gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
 end
 
