@@ -76,4 +76,4 @@ end
 # NB: this line should stay *after* rspec/rspec-rails so
 # that paper_trail rspec integration fires after rspec is
 # loaded.
-gem 'paper_trail', '~> 3.0.0.rc2'
+gem 'paper_trail', '~> 3.0.1'
