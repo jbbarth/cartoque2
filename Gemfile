@@ -18,7 +18,7 @@ gem 'uglifier', '~> 2.5.0'
 gem 'coffee-rails', '~> 4.0.1'
 
 # JS Runtime
-gem 'therubyracer', '~> 0.12.0'
+gem 'therubyracer', '~> 0.12.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
