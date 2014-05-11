@@ -42,7 +42,7 @@ gem 'devise', '~> 3.0.0'
 gem 'will_paginate', '~> 3.0.5'
 
 # Trees
-gem 'ancestry', '~> 2.0.0'
+gem 'ancestry', '~> 2.1.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
