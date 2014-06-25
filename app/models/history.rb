@@ -1,4 +1,4 @@
-# This object groups query parameters and versions for easier querying in
+# This object groups query parameters and versions for easier querying in
 # HistoryController. Otherwise versions don't contain query parameters, e.g.
 # the model or group of models. For now query parameter == model
 class History

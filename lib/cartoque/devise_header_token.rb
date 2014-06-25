@@ -1,4 +1,4 @@
-# This rack middleware adds an "api_token" parameters to the
+# This rack middleware adds an "api_token" parameters to the
 # query string if the 'X-Api-Token' HTTP header is present,
 # so that Devise authentication can work through this custom
 # HTTP header like in the previous versions of Cartoque.

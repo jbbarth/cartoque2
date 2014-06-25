@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-# Capybara integration tests
+# Capybara integration tests
 require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -47,7 +47,7 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
 
-  # Include Devise test helpers for controller specs
+  # Include Devise test helpers for controller specs
   config.include Devise::TestHelpers, type: :controller
   # Useful self-defined macros
   config.extend ControllerMacros, type: :controller
@@ -55,10 +55,10 @@ RSpec.configure do |config|
   # Include warden helpers in integration specs ("login_as" etc.)
   config.include Warden::Test::Helpers, type: :feature
 
-  # Include factory_girl syntax methods so that we don't have to type "FactoryGirl" each time
+  # Include factory_girl syntax methods so that we don't have to type "FactoryGirl" each time
   config.include FactoryGirl::Syntax::Methods
 
-  # Database Cleaner
+  # Database Cleaner
   # Restore a clean state between each spec/test
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

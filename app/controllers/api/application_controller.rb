@@ -7,7 +7,7 @@ class API::ApplicationController < ::ApplicationController
   # API controllers should respond only to json requests
   respond_to :json
 
-  # Most index requests are paginated, this gives the default number of results
+  # Most index requests are paginated, this gives the default number of results
   # included in each page
   def items_per_page
     50
@@ -43,7 +43,7 @@ class API::ApplicationController < ::ApplicationController
            status: :unprocessable_entity
   end
 
-  # Renders errors as json
+  # Renders errors as json
   #
   # Returns a 422 error code by default (unprocessable entity, often validation
   # errors), but this can be overriden if the hash provided as argument has a

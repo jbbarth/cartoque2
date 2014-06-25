@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module Cartoque
   class Application < Rails::Application
-    # Version of the app
+    # Version of the app
     # http://semver.org ?
     VERSION = '0.4.0-alpha'
 
