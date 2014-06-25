@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Ensure users are authenticated for any action
+  # 1/ custom authentication via token for api requests
+  # (devise dropped support for this in 3.1.x series)
+  before_filter :authenticate_user_from_token!
+  # 2/ standard authentication through devise for webapp
   before_filter :authenticate_user!
 
   # Redirect user to previously requested page after sign in
@@ -18,6 +22,20 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
       format.any(:atom, :xml, :js, :json) { head :not_found }
+    end
+  end
+
+  private
+  # See: https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
+  def authenticate_user_from_token!
+    user_token = request.headers["X-Api-Token"].presence
+    user = user_token && User.find_by_authentication_token(user_token.to_s)
+    if user
+      # Notice we are passing store false, so the user is not
+      # actually stored in the session and a token is needed
+      # for every request. If you want the token to work as a
+      # sign in token, you can simply remove store: false.
+      sign_in :user, user, store: false
     end
   end
 end

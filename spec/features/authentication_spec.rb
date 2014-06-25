@@ -42,12 +42,6 @@ describe 'Authentication' do
         JSON.parse(page.body).keys.should include 'message'
       end
 
-      it 'refuses access if the given authentication token is too short' do
-        page.set_headers('HTTP_X_API_TOKEN' => 'blah')
-        visit servers_path(format: 'json').to_s
-        page.status_code.should == 401
-      end
-
       it 'grants access if authentication token is valid' do
         u = create(:user)
         page.set_headers('HTTP_X_API_TOKEN' => u.authentication_token)
