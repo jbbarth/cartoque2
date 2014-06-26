@@ -9,7 +9,7 @@ gem 'pg', '~> 0.17.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1.1'
-gem 'font-awesome-rails', '~> 4.0.3.0'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.5.0'
