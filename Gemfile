@@ -32,13 +32,13 @@ gem 'turbolinks', '~> 2.2.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 1.2' # => removed in favor of roar
 
-# Resource-Oriented Architectures in Ruby
+# Resource-Oriented Architectures in Ruby
 gem 'roar-rails', '~> 0.1.5'
 
-# Authentication
+# Authentication
 gem 'devise', '~> 3.2.4'
 
-# Pagination
+# Pagination
 gem 'will_paginate', '~> 3.0.5'
 
 # Trees
@@ -62,13 +62,13 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'pry', group: [ :development, :test ]
 
-# Testing stuff
+# Testing stuff
 group :test do
   gem 'rspec', '~> 2.14.1'                   # specs framework
   gem 'rspec-rails', '~> 2.14.2'             # rails integration for rspec
-  gem 'capybara', '~> 2.2.1'                 # integration tests
-  gem 'database_cleaner', '~> 1.2.0'         # clean db state during/after tests
-  gem 'factory_girl_rails', '~> 4.4.1'       # replacement for fixtures
+  gem 'capybara', '~> 2.2.1'                 # integration tests
+  gem 'database_cleaner', '~> 1.2.0'         # clean db state during/after tests
+  gem 'factory_girl_rails', '~> 4.4.1'       # replacement for fixtures
   gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
 end
 
