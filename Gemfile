@@ -69,7 +69,7 @@ group :test do
   gem 'capybara', '~> 2.3.0'                 # integration tests
   gem 'database_cleaner', '~> 1.3.0'         # clean db state during/after tests
   gem 'factory_girl_rails', '~> 4.4.1'       # replacement for fixtures
-  gem 'guard-rspec', '~> 3.0.2'              # automatically launch specs
+  gem 'guard-rspec', '~> 4.2.10'             # automatically launch specs
 end
 
 # Audit AR models
